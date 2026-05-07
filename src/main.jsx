@@ -92,12 +92,11 @@ function App() {
       <section id="home" className="hero">
         <div className="hero-copy">
           <p className="eyebrow">AI autonomous product studio</p>
-          <h1>We build AI products, SaaS, apps, and automations.</h1>
+          <h1>AI products that work like real business systems.</h1>
           <p className="hero-text">
-            Skillwyn Labs helps businesses turn ideas into polished digital
-            products: autonomous AI systems, custom AI SaaS, full-stack
-            websites, landing pages, web apps, mobile apps, and workflow
-            automations.
+            Skillwyn Labs builds autonomous AI products, custom SaaS platforms,
+            full-stack websites, landing pages, apps, web apps, and automations
+            for businesses that want more than a basic online presence.
           </p>
 
           <div className="hero-actions">
@@ -105,7 +104,7 @@ function App() {
               Start a Project <ArrowRight size={18} aria-hidden="true" />
             </a>
             <a className="button secondary" href="#services">
-              Explore Services
+              See What We Build
             </a>
           </div>
 
@@ -122,15 +121,15 @@ function App() {
         <div className="hero-stage" aria-label="AI product studio preview">
           <img src="/ai-product-hero.png" alt="3D AI product ecosystem" />
           <div className="glass-card card-one">
-            <Sparkles size={18} aria-hidden="true" />
+            <Sparkles size={17} aria-hidden="true" />
             <span>AI SaaS</span>
           </div>
           <div className="glass-card card-two">
-            <Workflow size={18} aria-hidden="true" />
+            <Workflow size={17} aria-hidden="true" />
             <span>Automation</span>
           </div>
           <div className="glass-card card-three">
-            <Rocket size={18} aria-hidden="true" />
+            <Rocket size={17} aria-hidden="true" />
             <span>Launch Ready</span>
           </div>
         </div>
