@@ -2,64 +2,72 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   ArrowRight,
+  Bot,
+  BrainCircuit,
   Check,
   Code2,
+  Cpu,
+  Globe,
   Layers3,
+  MonitorSmartphone,
   Rocket,
-  ShieldCheck,
+  Smartphone,
   Sparkles,
-  Star,
+  Workflow,
 } from 'lucide-react';
 import './styles.css';
 
+const capabilities = [
+  'Autonomous AI agents',
+  'Custom AI SaaS products',
+  'Full-stack web apps',
+  'Landing pages that convert',
+  'Mobile app interfaces',
+  'Business automations',
+];
+
 const services = [
   {
-    icon: Layers3,
-    title: 'Product Strategy',
-    copy: 'Clear scope, feature priority, user journeys, and launch roadmap before design starts.',
+    icon: BrainCircuit,
+    title: 'AI Product Systems',
+    copy: 'We design AI-first products that can reason, automate workflows, answer users, and connect with real business tools.',
   },
   {
-    icon: Sparkles,
-    title: 'UI/UX Design',
-    copy: 'Premium interfaces for SaaS, portfolio, marketplace, dashboards, and client portals.',
+    icon: Bot,
+    title: 'Autonomous Agents',
+    copy: 'Custom agents for support, research, lead handling, operations, internal dashboards, and repetitive team tasks.',
+  },
+  {
+    icon: Cpu,
+    title: 'Custom AI SaaS',
+    copy: 'From idea to launch-ready SaaS: auth, dashboards, AI features, payments, admin flows, and deployment.',
   },
   {
     icon: Code2,
-    title: 'Web Development',
-    copy: 'Fast React websites with clean code, responsive layouts, SEO basics, and deployment.',
+    title: 'Full-Stack Builds',
+    copy: 'Modern websites, web apps, landing pages, APIs, databases, and responsive frontends built cleanly.',
   },
   {
-    icon: Rocket,
-    title: 'Launch Support',
-    copy: 'GitHub, Vercel, analytics, performance checks, and post-launch polish handled end to end.',
+    icon: MonitorSmartphone,
+    title: 'Websites and Apps',
+    copy: 'Professional portfolio sites, business websites, client portals, mobile app screens, and product interfaces.',
+  },
+  {
+    icon: Workflow,
+    title: 'Automation Workflows',
+    copy: 'Connect forms, CRMs, email, sheets, APIs, AI models, and internal tools into reliable workflows.',
   },
 ];
 
-const products = [
-  'Business portfolio websites',
-  'Landing pages for ads',
-  'Booking and lead forms',
-  'Admin dashboards',
-  'SaaS MVP interfaces',
-  'E-commerce storefronts',
-];
-
-const work = [
-  {
-    name: 'NovaLaunch',
-    type: 'Startup Landing Page',
-    metric: '+42% demo requests',
-  },
-  {
-    name: 'AtlasOps',
-    type: 'Operations Dashboard',
-    metric: '3x faster reporting',
-  },
-  {
-    name: 'Maison Retail',
-    type: 'Premium Storefront',
-    metric: '+28% checkout flow',
-  },
+const productTypes = [
+  'AI chatbot platforms',
+  'Lead generation systems',
+  'Client booking portals',
+  'Internal team dashboards',
+  'AI content tools',
+  'Marketplace web apps',
+  'Startup MVPs',
+  'Automation control panels',
 ];
 
 function App() {
@@ -67,83 +75,98 @@ function App() {
     <main className="site-shell">
       <nav className="topbar" aria-label="Primary navigation">
         <a className="brand" href="#home" aria-label="Skillwyn Labs home">
-          <span className="brand-mark">S</span>
+          <span className="brand-mark">SL</span>
           <span>Skillwyn Labs</span>
         </a>
         <div className="nav-links">
           <a href="#services">Services</a>
           <a href="#products">Products</a>
-          <a href="#work">Work</a>
+          <a href="#process">Process</a>
           <a href="#contact">Contact</a>
         </div>
         <a className="nav-cta" href="mailto:hello@skillwynlabs.com">
-          Start a Project
+          Build with us
         </a>
       </nav>
 
       <section id="home" className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Web design and product studio</p>
-          <h1>Premium websites that turn visitors into clients.</h1>
+          <p className="eyebrow">AI autonomous product studio</p>
+          <h1>We build AI products, SaaS, apps, and automations.</h1>
           <p className="hero-text">
-            We design and build sharp portfolio sites, product pages, dashboards,
-            and launch-ready web apps for founders, creators, and growing teams.
+            Skillwyn Labs helps businesses turn ideas into polished digital
+            products: autonomous AI systems, custom AI SaaS, full-stack
+            websites, landing pages, web apps, mobile apps, and workflow
+            automations.
           </p>
+
           <div className="hero-actions">
             <a className="button primary" href="mailto:hello@skillwynlabs.com">
-              Get a Proposal <ArrowRight size={18} aria-hidden="true" />
+              Start a Project <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a className="button secondary" href="#work">
-              View Work
+            <a className="button secondary" href="#services">
+              Explore Services
             </a>
           </div>
-          <div className="trust-row" aria-label="Highlights">
-            <span>
-              <Star size={16} aria-hidden="true" /> Client-ready design
-            </span>
-            <span>
-              <ShieldCheck size={16} aria-hidden="true" /> Deployment included
-            </span>
+
+          <div className="capability-strip" aria-label="What we build">
+            {capabilities.map((item) => (
+              <span key={item}>
+                <Check size={15} aria-hidden="true" />
+                {item}
+              </span>
+            ))}
           </div>
         </div>
-        <div className="hero-visual" aria-label="Digital product studio preview">
-          <img src="/studio-hero.png" alt="Premium digital product studio desk" />
-          <div className="floating-panel">
-            <span>Launch score</span>
-            <strong>98%</strong>
-            <small>Performance-ready build</small>
+
+        <div className="hero-stage" aria-label="AI product studio preview">
+          <img src="/ai-product-hero.png" alt="3D AI product ecosystem" />
+          <div className="glass-card card-one">
+            <Sparkles size={18} aria-hidden="true" />
+            <span>AI SaaS</span>
+          </div>
+          <div className="glass-card card-two">
+            <Workflow size={18} aria-hidden="true" />
+            <span>Automation</span>
+          </div>
+          <div className="glass-card card-three">
+            <Rocket size={18} aria-hidden="true" />
+            <span>Launch Ready</span>
           </div>
         </div>
       </section>
 
-      <section className="metrics" aria-label="Studio metrics">
+      <section className="proof-row" aria-label="Build focus">
         <div>
-          <strong>15+</strong>
-          <span>Project types supported</span>
+          <strong>AI-first</strong>
+          <span>Products designed around intelligence, not just pages.</span>
         </div>
         <div>
-          <strong>7 day</strong>
-          <span>Fast landing page sprints</span>
+          <strong>Full-stack</strong>
+          <span>Frontend, backend, API, database, and deployment.</span>
         </div>
         <div>
-          <strong>100%</strong>
-          <span>Responsive builds</span>
+          <strong>Client-ready</strong>
+          <span>Clean UI, responsive layout, and business-focused flow.</span>
         </div>
       </section>
 
       <section id="services" className="section">
         <div className="section-heading">
-          <p className="eyebrow">Services</p>
-          <h2>Everything needed to look serious online.</h2>
+          <p className="eyebrow">What we do</p>
+          <h2>From AI idea to usable product.</h2>
           <p>
-            From first idea to polished deployment, we package strategy, design,
-            development, and launch work into one calm process.
+            We combine product thinking, UI/UX, development, AI integration,
+            and automation so your product feels complete from day one.
           </p>
         </div>
+
         <div className="service-grid">
           {services.map(({ icon: Icon, title, copy }) => (
             <article className="service-card" key={title}>
-              <Icon size={24} aria-hidden="true" />
+              <div className="icon-box">
+                <Icon size={24} aria-hidden="true" />
+              </div>
               <h3>{title}</h3>
               <p>{copy}</p>
             </article>
@@ -151,78 +174,62 @@ function App() {
         </div>
       </section>
 
-      <section id="products" className="product-band">
+      <section id="products" className="product-section">
         <div className="product-copy">
-          <p className="eyebrow">Products</p>
-          <h2>Web products clients can understand in one scroll.</h2>
+          <p className="eyebrow">Products we can build</p>
+          <h2>Offer clients something more powerful than a basic website.</h2>
           <p>
-            We create sites that explain your value clearly, build trust fast,
-            and make it easy for a client to message, book, or buy.
+            Whether you need a premium landing page or a complete AI SaaS MVP,
+            we shape the experience, build the interface, connect the logic, and
+            prepare it for launch.
           </p>
         </div>
-        <div className="product-list">
-          {products.map((product) => (
-            <div className="product-item" key={product}>
-              <Check size={18} aria-hidden="true" />
-              <span>{product}</span>
+
+        <div className="product-orbit">
+          {productTypes.map((item, index) => (
+            <div className="orbit-item" key={item} style={{ '--i': index }}>
+              <Globe size={17} aria-hidden="true" />
+              <span>{item}</span>
             </div>
           ))}
         </div>
       </section>
 
-      <section id="work" className="section">
+      <section id="process" className="section process-section">
         <div className="section-heading">
-          <p className="eyebrow">Selected concepts</p>
-          <h2>Portfolio formats built to win gigs.</h2>
-        </div>
-        <div className="work-grid">
-          {work.map((item) => (
-            <article className="work-card" key={item.name}>
-              <div>
-                <span>{item.type}</span>
-                <h3>{item.name}</h3>
-              </div>
-              <strong>{item.metric}</strong>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="process-section">
-        <div className="section-heading">
-          <p className="eyebrow">Process</p>
-          <h2>Simple, direct, and built for momentum.</h2>
+          <p className="eyebrow">How we work</p>
+          <h2>Clear steps, premium execution.</h2>
         </div>
         <div className="process-grid">
-          <div>
+          <article>
             <span>01</span>
-            <h3>Discover</h3>
-            <p>We define offer, audience, pages, and the strongest conversion path.</p>
-          </div>
-          <div>
+            <h3>Map the product</h3>
+            <p>We define users, workflows, features, pages, data, and AI behavior.</p>
+          </article>
+          <article>
             <span>02</span>
-            <h3>Design</h3>
-            <p>We shape a polished interface with content hierarchy and visual trust.</p>
-          </div>
-          <div>
+            <h3>Design the experience</h3>
+            <p>We create clean layouts, strong sections, product flows, and visual polish.</p>
+          </article>
+          <article>
             <span>03</span>
-            <h3>Develop</h3>
-            <p>We build responsive React pages and prepare them for production deploy.</p>
-          </div>
+            <h3>Build and launch</h3>
+            <p>We develop, test, connect integrations, deploy, and prepare handoff.</p>
+          </article>
         </div>
       </section>
 
       <section id="contact" className="cta-section">
         <div>
-          <p className="eyebrow">Book a build</p>
-          <h2>Send this site to clients with confidence.</h2>
+          <p className="eyebrow">Ready for gigs</p>
+          <h2>Send clients a serious product studio.</h2>
           <p>
-            Need a portfolio, business website, product page, or MVP interface?
-            Tell us what you are selling and we will shape the web experience.
+            Tell us what you want to build: AI SaaS, automation, app, web app,
+            landing page, or a complete full-stack product.
           </p>
         </div>
         <a className="button primary" href="mailto:hello@skillwynlabs.com">
-          hello@skillwynlabs.com <ArrowRight size={18} aria-hidden="true" />
+          Discuss a Build <ArrowRight size={18} aria-hidden="true" />
         </a>
       </section>
     </main>
