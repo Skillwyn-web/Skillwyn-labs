@@ -8,9 +8,7 @@ import {
   Code2,
   Cpu,
   Globe,
-  Layers3,
   MonitorSmartphone,
-  Rocket,
   Smartphone,
   Sparkles,
   Workflow,
@@ -18,44 +16,44 @@ import {
 import './styles.css';
 
 const capabilities = [
-  'Autonomous AI agents',
-  'Custom AI SaaS products',
-  'Full-stack web apps',
-  'Landing pages that convert',
-  'Mobile app interfaces',
-  'Business automations',
+  'AI agents',
+  'Custom SaaS',
+  'Web apps',
+  'Landing pages',
+  'Mobile apps',
+  'Automations',
 ];
 
 const services = [
   {
     icon: BrainCircuit,
     title: 'AI Product Systems',
-    copy: 'We design AI-first products that can reason, automate workflows, answer users, and connect with real business tools.',
+    copy: 'AI-first products that reason, automate workflows, answer users, and connect with business tools.',
   },
   {
     icon: Bot,
     title: 'Autonomous Agents',
-    copy: 'Custom agents for support, research, lead handling, operations, internal dashboards, and repetitive team tasks.',
+    copy: 'Agents for support, research, lead handling, operations, dashboards, and repetitive team tasks.',
   },
   {
     icon: Cpu,
     title: 'Custom AI SaaS',
-    copy: 'From idea to launch-ready SaaS: auth, dashboards, AI features, payments, admin flows, and deployment.',
+    copy: 'Auth, dashboards, AI features, payments, admin flows, integrations, and production deployment.',
   },
   {
     icon: Code2,
     title: 'Full-Stack Builds',
-    copy: 'Modern websites, web apps, landing pages, APIs, databases, and responsive frontends built cleanly.',
+    copy: 'Modern websites, web apps, landing pages, APIs, databases, and responsive frontends.',
   },
   {
     icon: MonitorSmartphone,
     title: 'Websites and Apps',
-    copy: 'Professional portfolio sites, business websites, client portals, mobile app screens, and product interfaces.',
+    copy: 'Portfolio sites, business websites, client portals, mobile screens, and product interfaces.',
   },
   {
     icon: Workflow,
     title: 'Automation Workflows',
-    copy: 'Connect forms, CRMs, email, sheets, APIs, AI models, and internal tools into reliable workflows.',
+    copy: 'Forms, CRMs, email, sheets, APIs, AI models, and internal tools connected into systems.',
   },
 ];
 
@@ -63,11 +61,11 @@ const productTypes = [
   'AI chatbot platforms',
   'Lead generation systems',
   'Client booking portals',
-  'Internal team dashboards',
+  'Internal dashboards',
   'AI content tools',
   'Marketplace web apps',
   'Startup MVPs',
-  'Automation control panels',
+  'Automation panels',
 ];
 
 function App() {
@@ -76,7 +74,6 @@ function App() {
       <nav className="topbar" aria-label="Primary navigation">
         <a className="brand" href="#home" aria-label="Skillwyn Labs home">
           <span className="brand-mark">SL</span>
-          <span>Skillwyn Labs</span>
         </a>
         <div className="nav-links">
           <a href="#services">Services</a>
@@ -85,79 +82,90 @@ function App() {
           <a href="#contact">Contact</a>
         </div>
         <a className="nav-cta" href="mailto:hello@skillwynlabs.com">
-          Build with us
+          Contact
         </a>
       </nav>
 
       <section id="home" className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">AI autonomous product studio</p>
-          <h1>AI products that work like real business systems.</h1>
+          <p className="availability">
+            <span aria-hidden="true" /> Available for new builds
+          </p>
+          <p className="eyebrow">Skillwyn Labs</p>
+          <h1>Bring your digital products to life with AI.</h1>
           <p className="hero-text">
-            Skillwyn Labs builds autonomous AI products, custom SaaS platforms,
-            full-stack websites, landing pages, apps, web apps, and automations
-            for businesses that want more than a basic online presence.
+            We build autonomous AI products, custom AI SaaS platforms,
+            full-stack websites, web apps, mobile apps, landing pages, and
+            automations for businesses that want a serious online product.
           </p>
 
           <div className="hero-actions">
             <a className="button primary" href="mailto:hello@skillwynlabs.com">
-              Start a Project <ArrowRight size={18} aria-hidden="true" />
+              Get in touch <ArrowRight size={17} aria-hidden="true" />
             </a>
             <a className="button secondary" href="#services">
-              See What We Build
+              Discover work
             </a>
           </div>
 
           <div className="capability-strip" aria-label="What we build">
             {capabilities.map((item) => (
               <span key={item}>
-                <Check size={15} aria-hidden="true" />
+                <Check size={14} aria-hidden="true" />
                 {item}
               </span>
             ))}
           </div>
         </div>
 
-        <div className="hero-stage" aria-label="AI product studio preview">
-          <img src="/ai-product-hero.png" alt="3D AI product ecosystem" />
-          <div className="glass-card card-one">
-            <Sparkles size={17} aria-hidden="true" />
-            <span>AI SaaS</span>
-          </div>
-          <div className="glass-card card-two">
-            <Workflow size={17} aria-hidden="true" />
-            <span>Automation</span>
-          </div>
-          <div className="glass-card card-three">
-            <Rocket size={17} aria-hidden="true" />
-            <span>Launch Ready</span>
-          </div>
+        <div className="showcase-wall" aria-label="Product previews">
+          <article className="preview-card analytics-card">
+            <span>AI Workflow</span>
+            <strong>Lead engine</strong>
+            <div className="bars">
+              <i />
+              <i />
+              <i />
+            </div>
+          </article>
+          <article className="preview-card phone-card">
+            <Smartphone size={28} aria-hidden="true" />
+            <strong>App UI</strong>
+            <span>Mobile-first product flows</span>
+          </article>
+          <article className="preview-card hero-preview">
+            <img src="/ai-product-hero.png" alt="AI product ecosystem preview" />
+          </article>
+          <article className="preview-card automation-card">
+            <Workflow size={26} aria-hidden="true" />
+            <strong>Automation</strong>
+            <span>APIs, CRMs, AI models</span>
+          </article>
+          <article className="preview-card compact-card">
+            <Bot size={24} aria-hidden="true" />
+            <strong>AI Agent</strong>
+            <span>Always-on assistant</span>
+          </article>
+          <div className="cursor-tag">Skillwyn</div>
         </div>
       </section>
 
-      <section className="proof-row" aria-label="Build focus">
+      <section className="about-panel">
         <div>
-          <strong>AI-first</strong>
-          <span>Products designed around intelligence, not just pages.</span>
+          <p className="eyebrow">What we build</p>
+          <h2>AI systems, websites, apps, and automations under one studio.</h2>
         </div>
-        <div>
-          <strong>Full-stack</strong>
-          <span>Frontend, backend, API, database, and deployment.</span>
-        </div>
-        <div>
-          <strong>Client-ready</strong>
-          <span>Clean UI, responsive layout, and business-focused flow.</span>
-        </div>
+        <p>
+          From idea to launch, we create digital products that look premium and
+          work deeply: AI agents, SaaS dashboards, full-stack platforms,
+          conversion landing pages, app interfaces, and workflow automations.
+        </p>
       </section>
 
       <section id="services" className="section">
         <div className="section-heading">
-          <p className="eyebrow">What we do</p>
-          <h2>From AI idea to usable product.</h2>
-          <p>
-            We combine product thinking, UI/UX, development, AI integration,
-            and automation so your product feels complete from day one.
-          </p>
+          <p className="eyebrow">Services</p>
+          <h2>Built for founders, creators, and modern businesses.</h2>
         </div>
 
         <div className="service-grid">
@@ -175,12 +183,11 @@ function App() {
 
       <section id="products" className="product-section">
         <div className="product-copy">
-          <p className="eyebrow">Products we can build</p>
-          <h2>Offer clients something more powerful than a basic website.</h2>
+          <p className="eyebrow">Product types</p>
+          <h2>Send clients a studio that can build the whole thing.</h2>
           <p>
-            Whether you need a premium landing page or a complete AI SaaS MVP,
-            we shape the experience, build the interface, connect the logic, and
-            prepare it for launch.
+            Not just static pages. We build the product layer, automation layer,
+            AI layer, and the interface clients actually use.
           </p>
         </div>
 
@@ -196,8 +203,8 @@ function App() {
 
       <section id="process" className="section process-section">
         <div className="section-heading">
-          <p className="eyebrow">How we work</p>
-          <h2>Clear steps, premium execution.</h2>
+          <p className="eyebrow">Process</p>
+          <h2>Simple path from idea to launch.</h2>
         </div>
         <div className="process-grid">
           <article>
@@ -213,7 +220,7 @@ function App() {
           <article>
             <span>03</span>
             <h3>Build and launch</h3>
-            <p>We develop, test, connect integrations, deploy, and prepare handoff.</p>
+            <p>We develop, connect integrations, deploy, and prepare handoff.</p>
           </article>
         </div>
       </section>
@@ -221,14 +228,14 @@ function App() {
       <section id="contact" className="cta-section">
         <div>
           <p className="eyebrow">Ready for gigs</p>
-          <h2>Send clients a serious product studio.</h2>
+          <h2>Have a product idea? Let's build it properly.</h2>
           <p>
-            Tell us what you want to build: AI SaaS, automation, app, web app,
-            landing page, or a complete full-stack product.
+            Send your idea for an AI SaaS, automation, website, app, landing
+            page, or full-stack product.
           </p>
         </div>
         <a className="button primary" href="mailto:hello@skillwynlabs.com">
-          Discuss a Build <ArrowRight size={18} aria-hidden="true" />
+          Start a build <ArrowRight size={17} aria-hidden="true" />
         </a>
       </section>
     </main>
