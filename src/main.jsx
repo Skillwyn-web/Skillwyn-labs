@@ -132,13 +132,9 @@ function App() {
           </p>
           <p className="eyebrow">Skillwyn Labs</p>
           <h1>
-            We build AI products, SaaS platforms, websites and automations.
+            We build <span className="heading-type">{typedText}</span>
+            <i className="heading-caret" aria-hidden="true" />
           </h1>
-          <div className="typewriter-line" aria-label="Rotating services">
-            <span>We build</span>
-            <strong>{typedText}</strong>
-            <i aria-hidden="true" />
-          </div>
           <p className="hero-text">
             We are a product studio that builds autonomous AI tools, custom AI
             SaaS products, full-stack websites, landing pages, web apps, mobile
