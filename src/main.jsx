@@ -10,7 +10,6 @@ import {
   Globe,
   MonitorSmartphone,
   Smartphone,
-  Sparkles,
   Workflow,
 } from 'lucide-react';
 import './styles.css';
@@ -92,12 +91,14 @@ function App() {
             <span aria-hidden="true" /> Available for new builds
           </p>
           <p className="eyebrow">Skillwyn Labs</p>
-          <h1>We build AI autonomous products and full-stack digital experiences.</h1>
+          <h1>
+            We build AI products, SaaS platforms, websites and automations.
+          </h1>
           <p className="hero-text">
-            We create AI products, custom AI SaaS platforms, full-stack
-            websites, landing pages, web apps, mobile apps, and business
-            automations for clients who need modern, scalable, and professional
-            digital systems.
+            We are a product studio that builds autonomous AI tools, custom AI
+            SaaS products, full-stack websites, landing pages, web apps, mobile
+            apps, and business automation systems for modern brands and
+            founders.
           </p>
 
           <div className="hero-actions">
@@ -121,7 +122,7 @@ function App() {
 
         <div className="showcase-wall" aria-label="Product previews">
           <article className="preview-card analytics-card">
-            <span>AI Workflow</span>
+            <span>Automation System</span>
             <strong>Lead engine</strong>
             <div className="bars">
               <i />
@@ -136,6 +137,10 @@ function App() {
           </article>
           <article className="preview-card hero-preview">
             <img src="/ai-product-hero.png" alt="AI product ecosystem preview" />
+            <div>
+              <span>AI SaaS Platform</span>
+              <strong>Custom product dashboard</strong>
+            </div>
           </article>
           <article className="preview-card automation-card">
             <Workflow size={26} aria-hidden="true" />
