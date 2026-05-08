@@ -1,0 +1,50 @@
+<svg width="1310" height="619" viewBox="0 0 1310 619" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1310" height="619" fill="#f8f9f7"/>
+  <path d="M0 68.5H1310" stroke="#cfd4d8"/>
+  <text x="18" y="52" fill="#111329" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" letter-spacing="-2">KAIB</text>
+  <path d="M94 25c13 1 25-4 33-16-2 15-9 24-22 28-7-1-11-4-11-12Z" fill="#00835f"/>
+  <text x="446" y="48" fill="#1e2329" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">ABOUT US</text>
+  <text x="660" y="48" fill="#1e2329" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">PLATFORM</text>
+  <text x="875" y="48" fill="#1e2329" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">INSIGHT</text>
+  <rect x="1000.5" y="22.5" width="126" height="38" rx="19" stroke="#c5ccd2"/>
+  <text x="1022" y="48" fill="#1e2329" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">SERVICES</text>
+  <rect x="1135.5" y="22.5" width="127" height="38" rx="19" stroke="#c5ccd2"/>
+  <text x="1165" y="48" fill="#1e2329" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">CONTACT</text>
+  <g opacity="0.86">
+    <path d="M292 430C361 285 503 199 673 237C795 264 891 371 1030 360C1128 353 1211 294 1242 216C1272 138 1223 74 1145 72C1032 68 941 173 862 291C788 402 702 532 536 548C407 560 317 514 292 430Z" fill="url(#paint0_linear)"/>
+    <path d="M346 459C391 351 490 294 609 318C717 340 797 435 919 438C1037 440 1130 365 1164 256" stroke="url(#paint1_linear)" stroke-width="108" stroke-linecap="round"/>
+    <path d="M387 469C445 535 539 556 640 510C758 456 820 334 901 213C969 113 1047 52 1139 76" stroke="url(#paint2_linear)" stroke-width="104" stroke-linecap="round"/>
+    <path d="M320 420C382 291 503 226 652 260C780 289 866 393 1012 379C1120 369 1206 299 1236 208" stroke="#ffffff" stroke-width="36" stroke-linecap="round" opacity="0.72"/>
+    <path d="M455 232L1038 410M407 307L966 486M542 187L1122 342M652 206L1138 279M357 389L812 548" stroke="#dfe7ec" stroke-width="2" opacity="0.72"/>
+    <path d="M515 194V540M600 193V529M685 218V486M770 259V432M855 316V407M940 338V398M1025 311V374" stroke="#dfe7ec" stroke-width="2" opacity="0.6"/>
+  </g>
+  <text x="26" y="323" fill="#1d2229" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="900">"BEYOND</text>
+  <text x="26" y="386" fill="#1d2229" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="900">THE LIMITS"</text>
+  <text x="26" y="428" fill="#78808a" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">KAIB - A new era of investment banking begins</text>
+  <rect x="18.5" y="484.5" width="229" height="48" rx="24" stroke="#d2d9de"/>
+  <text x="42" y="513" fill="#1d2229" font-family="Arial, Helvetica, sans-serif" font-size="20">Explore our solutions</text>
+  <rect x="264.5" y="484.5" width="299" height="48" rx="24" fill="url(#paint3_linear)" stroke="#d2d9de"/>
+  <text x="293" y="513" fill="#1d2229" font-family="Arial, Helvetica, sans-serif" font-size="20">Request institutional access</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="292" y1="310" x2="1262" y2="310" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e8eef1"/>
+      <stop offset="0.42" stop-color="#aebec9"/>
+      <stop offset="0.7" stop-color="#f7f9f8"/>
+      <stop offset="1" stop-color="#d7e2e8"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear" x1="333" y1="357" x2="1175" y2="357" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9fb3c2"/>
+      <stop offset="0.5" stop-color="#f2f6f7"/>
+      <stop offset="1" stop-color="#cbd7de"/>
+    </linearGradient>
+    <linearGradient id="paint2_linear" x1="380" y1="310" x2="1140" y2="310" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#edf3f5"/>
+      <stop offset="0.42" stop-color="#8aa1b1"/>
+      <stop offset="1" stop-color="#f5f8f8"/>
+    </linearGradient>
+    <linearGradient id="paint3_linear" x1="264" y1="508" x2="564" y2="508" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d9dee2"/>
+    </linearGradient>
+  </defs>
+</svg>

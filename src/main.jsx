@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import Lenis from 'lenis';
 import {
   ArrowRight,
   Bot,
@@ -30,57 +31,69 @@ const aiExperiences = [
     title: 'Autonomous product agents',
     meta: 'Agent design • Automation • Dashboards',
     status: 'Live builds',
+    backTitle: 'What flips live',
+    backCopy: 'AI assistants, copilots, workflow agents, model routing, prompts, and admin dashboards ready for real users.',
+    points: ['Agent flows', 'AI dashboards', 'Tool integrations'],
   },
   {
     label: 'SaaS',
     title: 'Custom AI SaaS for teams',
     meta: 'Auth • Data • AI workflows',
     status: 'MVP ready',
+    backTitle: 'SaaS systems',
+    backCopy: 'Authenticated products with data models, roles, dashboards, and AI-powered actions.',
+    points: ['Auth & roles', 'Data layer', 'Team workflows'],
   },
   {
     label: 'Web',
     title: 'Websites that explain and convert',
     meta: 'Brand • Landing pages • Web apps',
     status: 'Launch ready',
+    backTitle: 'Conversion builds',
+    backCopy: 'Premium websites, landing pages, product pages, and web apps designed to turn attention into action.',
+    points: ['Landing pages', 'Portfolio sites', 'Web apps'],
   },
   {
     label: 'Ops',
     title: 'Automation for daily business work',
     meta: 'CRM • Email • APIs • Sheets',
     status: 'Systemized',
+    backTitle: 'Automated ops',
+    backCopy: 'Connected workflows across CRMs, forms, sheets, email, APIs, and AI models so teams move faster.',
+    points: ['API workflows', 'CRM automation', 'Internal tools'],
   },
 ];
 
 const services = [
   {
     icon: BrainCircuit,
-    title: 'AI vision sprint',
-    copy: 'Map opportunities, use-cases, AI behavior, tone, flows, and product direction.',
-  },
-  {
-    icon: Layers3,
-    title: 'Product design partner',
-    copy: 'Senior UI/UX, product thinking, motion, visual systems, and weekly iteration.',
+    title: 'AI Product Development',
+    copy: 'We build AI-powered products, intelligent tools, copilots, and scalable SaaS platforms designed around modern workflows and real business use cases.',
   },
   {
     icon: Code2,
-    title: 'Design to build',
-    copy: 'React frontends, APIs, dashboards, databases, auth, integrations, and deployment.',
+    title: 'Full-Stack Applications',
+    copy: 'Custom web platforms, dashboards, APIs, internal systems, and scalable backend architecture built for performance and long-term growth.',
+  },
+  {
+    icon: Layers3,
+    title: 'Product Design & User Experience',
+    copy: 'Clean interfaces, product-focused UX, strong visual systems, and modern digital experiences designed for usability and conversion.',
   },
   {
     icon: Workflow,
-    title: 'Automation systems',
-    copy: 'Connect business tools, forms, CRMs, sheets, AI models, and internal processes.',
+    title: 'Intelligent Systems & Automation',
+    copy: 'Execution-focused systems integrating AI models, workflows, APIs, and operational logic into streamlined digital experiences.',
   },
   {
     icon: MonitorSmartphone,
-    title: 'Brand and web design',
-    copy: 'Portfolio websites, SaaS landing pages, launch visuals, mobile app UI, and product sites.',
+    title: 'Websites, Apps & Landing Pages',
+    copy: 'High-converting portfolio sites, app interfaces, mobile-first web apps, and landing pages with polished responsive experiences.',
   },
   {
     icon: Bot,
-    title: 'AI agent interfaces',
-    copy: 'Interfaces for agents that plan, decide, summarize, route, and execute real tasks.',
+    title: 'AI Agent Interfaces',
+    copy: 'Interfaces for agents that plan, summarize, route, decide, and execute real business tasks with clear user control.',
   },
 ];
 
@@ -89,26 +102,148 @@ const featuredProducts = [
     title: 'PRAMILA',
     sector: 'Fashion Ecommerce',
     image: '/product-pramila.png',
+    url: 'https://pramila-chi.vercel.app/',
     summary:
-      'Modern Indian wear storefront with refined navigation, premium visuals, and a conversion-led shopping flow.',
-    tags: ['Ecommerce', 'Fashion UI', 'Landing Page'],
+      'A premium ecommerce storefront for modern Indian wear with an elegant hero, product-focused navigation, refined visuals, and a clean shopping experience designed to convert visitors into buyers.',
+    tags: ['Ecommerce', 'Fashion UI', 'Landing Page', 'Responsive Website'],
   },
   {
     title: 'NEWATO',
-    sector: 'AI Agent Platform',
+    sector: 'AI Execution System',
     image: '/product-newato.png',
+    url: 'https://newato.world/',
     summary:
-      'Computer-native AI agent platform for planning, automation, timeline tracking, and execution workflows.',
-    tags: ['AI Agent', 'Automation', 'SaaS'],
+      'A next-generation AI execution system designed around intelligent workflows, task orchestration, browser interaction, operational tooling, and autonomous multi-step actions across modern digital environments.',
+    tags: ['AI Agent', 'Task Orchestration', 'Automation', 'Intelligent Workflows'],
+  },
+];
+
+const processSteps = [
+  {
+    number: '01',
+    title: 'Discover',
+    copy: 'We understand the product vision, workflows, user experience, and technical requirements before defining the system architecture.',
+  },
+  {
+    number: '02',
+    title: 'Design',
+    copy: 'We craft modern interfaces, scalable product flows, and intuitive user experiences focused on clarity and usability.',
+  },
+  {
+    number: '03',
+    title: 'Build',
+    copy: 'We develop scalable systems, integrations, APIs, and production-ready applications optimized for real-world performance.',
+  },
+];
+
+const results = [
+  {
+    title: 'Scalable Products',
+    copy: 'Built modern platforms and systems designed for growth, usability, and long-term scalability.',
+  },
+  {
+    title: 'Faster Execution',
+    copy: 'Developed systems that streamline workflows and improve operational efficiency across teams.',
+  },
+  {
+    title: 'Intelligent Experiences',
+    copy: 'Created AI-powered tools and digital experiences focused on real-world usability and execution.',
+  },
+  {
+    title: 'End-to-End Development',
+    copy: 'From idea to deployment, building complete products across frontend, backend, AI, and infrastructure.',
   },
 ];
 
 const portfolioRows = [
   ['AI', 'NEWATO', 'AI that executes across workflows', 'AI Experience • SaaS UI'],
   ['ECOM', 'PRAMILA', 'Modern Indian wear ecommerce presence', 'Website • Storefront'],
-  ['SaaS', 'Skillwyn OS', 'Internal dashboards for product operations', 'Dashboard • Automation'],
-  ['Web', 'Launch Labs', 'Landing pages for high-trust service businesses', 'Brand • Web'],
 ];
+
+function CustomCursor() {
+  const cursorRef = useRef(null);
+
+  useEffect(() => {
+    const cursor = cursorRef.current;
+    if (!cursor || window.matchMedia('(pointer: coarse)').matches) {
+      return undefined;
+    }
+
+    const moveCursor = (event) => {
+      cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+    };
+
+    const updateHover = (event) => {
+      const isInteractive = event.target.closest('a, button, [role="button"]');
+      cursor.classList.toggle('is-hovering', Boolean(isInteractive));
+    };
+
+    const pressCursor = () => cursor.classList.add('is-pressed');
+    const releaseCursor = () => cursor.classList.remove('is-pressed');
+
+    window.addEventListener('pointermove', moveCursor);
+    window.addEventListener('pointerover', updateHover);
+    window.addEventListener('pointerdown', pressCursor);
+    window.addEventListener('pointerup', releaseCursor);
+
+    return () => {
+      window.removeEventListener('pointermove', moveCursor);
+      window.removeEventListener('pointerover', updateHover);
+      window.removeEventListener('pointerdown', pressCursor);
+      window.removeEventListener('pointerup', releaseCursor);
+    };
+  }, []);
+
+  return <span className="custom-cursor" ref={cursorRef} aria-hidden="true" />;
+}
+
+function SmoothScroll() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.25,
+      easing: (time) => Math.min(1, 1.001 - 2 ** (-10 * time)),
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.15,
+    });
+
+    let frameId = 0;
+    const raf = (time) => {
+      lenis.raf(time);
+      frameId = window.requestAnimationFrame(raf);
+    };
+
+    frameId = window.requestAnimationFrame(raf);
+
+    const handleAnchorClick = (event) => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) {
+        return;
+      }
+
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      lenis.scrollTo(target, {
+        offset: -84,
+        duration: 1.15,
+      });
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      document.removeEventListener('click', handleAnchorClick);
+      lenis.destroy();
+    };
+  }, []);
+
+  return null;
+}
 
 function App() {
   const [serviceIndex, setServiceIndex] = useState(0);
@@ -143,10 +278,12 @@ function App() {
 
   return (
     <main className="site-shell">
+      <SmoothScroll />
+      <CustomCursor />
+
       <nav className="topbar" aria-label="Primary navigation">
         <a className="brand" href="#home" aria-label="Skillwyn Labs home">
-          <span className="brand-mark">S</span>
-          <span>Skillwyn Labs</span>
+          <img className="brand-logo brand-logo-wide" src="/skillwyn-white-logo.png" alt="Skillwyn" />
         </a>
         <div className="nav-links">
           <a href="#services">Services</a>
@@ -182,94 +319,100 @@ function App() {
         </div>
 
         <div className="hero-visual" aria-hidden="true">
-          <div className="visual-glow" />
-          <div className="build-system">
-            <div className="system-ring ring-one" />
-            <div className="system-ring ring-two" />
-            <div className="system-core">
-              <BrainCircuit size={46} />
-              <span>Skillwyn Labs</span>
-            </div>
+          <div className="work-showcase">
+            <div className="showcase-glow" />
+            <article className="showcase-frame pramila-frame">
+              <img src="/product-pramila.png" alt="" />
+            </article>
 
-            <div className="system-card web-card">
-              <Globe size={19} />
-              <strong>Website</strong>
-              <span>Brand, landing, portfolio</span>
-            </div>
-            <div className="system-card saas-card">
-              <Layers3 size={19} />
-              <strong>AI SaaS</strong>
-              <span>Dashboard, auth, workflows</span>
-            </div>
-            <div className="system-card app-card">
-              <MonitorSmartphone size={19} />
-              <strong>Apps</strong>
-              <span>Mobile and web apps</span>
-            </div>
-            <div className="system-card ops-card">
-              <Workflow size={19} />
-              <strong>Automation</strong>
-              <span>APIs, CRM, daily ops</span>
-            </div>
+            <article className="showcase-frame newato-frame">
+              <img src="/product-newato.png" alt="" />
+            </article>
 
-            <div className="mini-preview">
-              <div className="preview-top">
-                <span />
-                <span />
-                <span />
-              </div>
-              <div className="preview-grid">
-                <i />
-                <i />
-                <i />
-              </div>
-            </div>
+            <article className="showcase-frame ai-frame">
+              <img src="/product-kaib.svg" alt="" />
+            </article>
           </div>
         </div>
       </section>
 
       <section className="logo-cloud" aria-label="Capabilities">
-        {['AI Products', 'Custom SaaS', 'Full Stack', 'Landing Pages', 'Web Apps', 'Mobile Apps', 'Automation'].map(
-          (item) => (
-            <span key={item}>{item}</span>
-          )
-        )}
+        <div className="marquee-track">
+          {[...typedServices, ...typedServices].map((item, index) => (
+            <span key={`${item}-${index}`}>{item}</span>
+          ))}
+        </div>
       </section>
 
       <section id="about" className="post-chat-section">
         <div>
-          <p className="eyebrow">Interfaces for the post-chat era</p>
-          <h2>AI demos impress, then stall. Adoption needs clarity, rhythm, and taste.</h2>
+          <p className="eyebrow">About us</p>
+          <h2>We are a product studio for AI, software, websites, apps, and automation.</h2>
         </div>
         <p>
-          At Skillwyn Labs, we build AI that moves beyond chat: guiding
-          decisions, reducing manual work, and making intelligence feel embedded
-          in real business workflows.
+          Skillwyn Labs helps startups, founders, and businesses turn ideas into
+          scalable digital products. We build AI-powered tools, SaaS platforms,
+          full-stack web applications, intelligent systems, modern landing
+          pages, and custom software focused on real-world usability,
+          performance, and execution.
         </p>
       </section>
 
       <section className="ai-experience-grid">
         {aiExperiences.map((item) => (
           <article key={item.title}>
-            <span>{item.label}</span>
-            <h3>{item.title}</h3>
-            <p>{item.meta}</p>
-            <small>{item.status}</small>
+            <div className="flip-card-inner">
+              <div className="flip-face flip-front">
+                <span>{item.label}</span>
+                <h3>{item.title}</h3>
+                <p>{item.meta}</p>
+                <small>{item.status}</small>
+              </div>
+              <div className="flip-face flip-back">
+                <span>{item.label}</span>
+                <h3>{item.backTitle}</h3>
+                <p>{item.backCopy}</p>
+                <ul>
+                  {item.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </article>
         ))}
       </section>
 
       <section id="services" className="section light-section">
         <div className="section-heading">
-          <p className="eyebrow">Everything you need</p>
+          <p className="eyebrow">Services</p>
           <h2>Everything you need to build great products.</h2>
         </div>
         <div className="service-grid">
-          {services.map(({ icon: Icon, title, copy }) => (
+          {services.map(({ icon: Icon, title, copy }, index) => (
             <article className="service-card" key={title}>
-              <Icon size={25} aria-hidden="true" />
+              <div className="service-card-top">
+                <Icon size={25} aria-hidden="true" />
+                <span>{String(index + 1).padStart(2, '0')}</span>
+              </div>
               <h3>{title}</h3>
               <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="process" className="section process-section">
+        <div className="section-heading">
+          <p className="eyebrow">Process</p>
+          <h2>Simple path from idea to launch.</h2>
+        </div>
+        <div className="process-grid">
+          {processSteps.map((item) => (
+            <article key={item.number}>
+              <span>{item.number}</span>
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
             </article>
           ))}
         </div>
@@ -282,19 +425,20 @@ function App() {
         </div>
         <div className="featured-grid">
           {featuredProducts.map((product) => (
-            <article className="product-card" key={product.title}>
+            <a
+              className="product-card"
+              href={product.url}
+              key={product.title}
+              rel="noreferrer"
+              target="_blank"
+            >
               <img src={product.image} alt={`${product.title} website preview`} />
-              <div>
-                <span>{product.sector}</span>
-                <h3>{product.title}</h3>
-                <p>{product.summary}</p>
-                <div className="brief-tags">
-                  {product.tags.map((tag) => (
-                    <small key={tag}>{tag}</small>
-                  ))}
-                </div>
+              <div className="project-url-pop">
+                <span>{product.title}</span>
+                <strong>Open project</strong>
+                <ArrowRight size={14} aria-hidden="true" />
               </div>
-            </article>
+            </a>
           ))}
         </div>
         <div className="portfolio-list">
@@ -304,6 +448,22 @@ function App() {
               <strong>{name}</strong>
               <p>{title}</p>
               <small>{meta}</small>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="results-section section light-section">
+        <div className="section-heading">
+          <p className="eyebrow">Execution Focused</p>
+          <h2>Building systems that deliver results.</h2>
+        </div>
+        <div className="service-grid">
+          {results.map((item) => (
+            <article className="service-card" key={item.title}>
+              <Check size={25} aria-hidden="true" />
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
             </article>
           ))}
         </div>
@@ -342,8 +502,11 @@ function App() {
           <p className="eyebrow">Book a strategy call</p>
           <h2>Bring your product vision and we’ll shape the build path.</h2>
           <p>
-            Tell us what you want to build: AI SaaS, automation, app, landing
-            page, website, or full-stack platform.
+            Skillwyn Labs is focused on building modern AI products, scalable
+            software platforms, intelligent systems, and digital experiences for
+            ambitious startups and businesses. We combine product thinking,
+            engineering, design, and AI capabilities to build systems that are
+            scalable, practical, and execution-focused.
           </p>
         </div>
         <a className="hero-button" href="mailto:hello@skillwynlabs.com">
@@ -355,3 +518,4 @@ function App() {
 }
 
 createRoot(document.getElementById('root')).render(<App />);
+
