@@ -92,11 +92,12 @@ function App() {
             <span aria-hidden="true" /> Available for new builds
           </p>
           <p className="eyebrow">Skillwyn Labs</p>
-          <h1>Bring your digital products to life with AI.</h1>
+          <h1>We build AI autonomous products and full-stack digital experiences.</h1>
           <p className="hero-text">
-            We build autonomous AI products, custom AI SaaS platforms,
-            full-stack websites, web apps, mobile apps, landing pages, and
-            automations for businesses that want a serious online product.
+            We create AI products, custom AI SaaS platforms, full-stack
+            websites, landing pages, web apps, mobile apps, and business
+            automations for clients who need modern, scalable, and professional
+            digital systems.
           </p>
 
           <div className="hero-actions">
@@ -104,7 +105,7 @@ function App() {
               Get in touch <ArrowRight size={17} aria-hidden="true" />
             </a>
             <a className="button secondary" href="#services">
-              Discover work
+              What we build
             </a>
           </div>
 
@@ -152,13 +153,15 @@ function App() {
 
       <section className="about-panel">
         <div>
-          <p className="eyebrow">What we build</p>
-          <h2>AI systems, websites, apps, and automations under one studio.</h2>
+          <p className="eyebrow">About us</p>
+          <h2>We are a product studio for AI, software, websites, apps, and automation.</h2>
         </div>
         <p>
-          From idea to launch, we create digital products that look premium and
-          work deeply: AI agents, SaaS dashboards, full-stack platforms,
-          conversion landing pages, app interfaces, and workflow automations.
+          Skillwyn Labs helps brands, founders, and businesses turn ideas into
+          working products. We build autonomous AI tools, AI-powered SaaS
+          products, full-stack websites, high-converting landing pages, custom
+          web apps, mobile app interfaces, and automation workflows that save
+          time and create real business value.
         </p>
       </section>
 
