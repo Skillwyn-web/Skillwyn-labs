@@ -14,16 +14,6 @@ import {
 } from 'lucide-react';
 import './styles.css';
 
-const typedServices = [
-  'autonomous AI products',
-  'custom AI SaaS platforms',
-  'full-stack websites',
-  'landing pages',
-  'web apps',
-  'mobile apps',
-  'business automations',
-];
-
 const aiExperiences = [
   {
     label: 'AI',
@@ -54,33 +44,23 @@ const aiExperiences = [
 const services = [
   {
     icon: BrainCircuit,
-    title: 'AI vision sprint',
-    copy: 'Map opportunities, use-cases, AI behavior, tone, flows, and product direction.',
-  },
-  {
-    icon: Layers3,
-    title: 'Product design partner',
-    copy: 'Senior UI/UX, product thinking, motion, visual systems, and weekly iteration.',
+    title: 'AI Product Development',
+    copy: 'We build AI-powered products, intelligent tools, copilots, and scalable SaaS platforms designed around modern workflows and real business use cases.',
   },
   {
     icon: Code2,
-    title: 'Design to build',
-    copy: 'React frontends, APIs, dashboards, databases, auth, integrations, and deployment.',
+    title: 'Full-Stack Applications',
+    copy: 'Custom web platforms, dashboards, APIs, internal systems, and scalable backend architecture built for performance and long-term growth.',
+  },
+  {
+    icon: Layers3,
+    title: 'Product Design & User Experience',
+    copy: 'Clean interfaces, product-focused UX, strong visual systems, and modern digital experiences designed for usability and conversion.',
   },
   {
     icon: Workflow,
-    title: 'Automation systems',
-    copy: 'Connect business tools, forms, CRMs, sheets, AI models, and internal processes.',
-  },
-  {
-    icon: MonitorSmartphone,
-    title: 'Brand and web design',
-    copy: 'Portfolio websites, SaaS landing pages, launch visuals, mobile app UI, and product sites.',
-  },
-  {
-    icon: Bot,
-    title: 'AI agent interfaces',
-    copy: 'Interfaces for agents that plan, decide, summarize, route, and execute real tasks.',
+    title: 'Intelligent Systems & Automation',
+    copy: 'Execution-focused systems integrating AI models, workflows, APIs, and operational logic into streamlined digital experiences.',
   },
 ];
 
@@ -90,16 +70,35 @@ const featuredProducts = [
     sector: 'Fashion Ecommerce',
     image: '/product-pramila.png',
     summary:
-      'Modern Indian wear storefront with refined navigation, premium visuals, and a conversion-led shopping flow.',
-    tags: ['Ecommerce', 'Fashion UI', 'Landing Page'],
+      'A premium ecommerce storefront for modern Indian wear with an elegant hero, product-focused navigation, refined visuals, and a clean shopping experience designed to convert visitors into buyers.',
+    tags: ['Ecommerce', 'Fashion UI', 'Landing Page', 'Responsive Website'],
   },
   {
     title: 'NEWATO',
-    sector: 'AI Agent Platform',
+    sector: 'AI Execution System',
     image: '/product-newato.png',
     summary:
-      'Computer-native AI agent platform for planning, automation, timeline tracking, and execution workflows.',
-    tags: ['AI Agent', 'Automation', 'SaaS'],
+      'A next-generation AI execution system designed around intelligent workflows, task orchestration, browser interaction, operational tooling, and autonomous multi-step actions across modern digital environments.',
+    tags: ['AI Agent', 'Task Orchestration', 'Automation', 'Intelligent Workflows'],
+  },
+];
+
+const results = [
+  {
+    title: 'Scalable Products',
+    copy: 'Built modern platforms and systems designed for growth, usability, and long-term scalability.',
+  },
+  {
+    title: 'Faster Execution',
+    copy: 'Developed systems that streamline workflows and improve operational efficiency across teams.',
+  },
+  {
+    title: 'Intelligent Experiences',
+    copy: 'Created AI-powered tools and digital experiences focused on real-world usability and execution.',
+  },
+  {
+    title: 'End-to-End Development',
+    copy: 'From idea to deployment — building complete products across frontend, backend, AI, and infrastructure.',
   },
 ];
 
@@ -110,47 +109,26 @@ const portfolioRows = [
   ['Web', 'Launch Labs', 'Landing pages for high-trust service businesses', 'Brand • Web'],
 ];
 
+const capabilities = [
+  'AI Products',
+  'Scalable SaaS Platforms',
+  'Full-Stack Applications',
+  'Intelligent Systems',
+];
+
 function App() {
-  const [serviceIndex, setServiceIndex] = useState(0);
-  const [typedText, setTypedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = typedServices[serviceIndex];
-    const isComplete = typedText === current;
-    const isEmpty = typedText === '';
-    const delay = isComplete && !isDeleting ? 2100 : isDeleting ? 58 : 110;
-
-    const timer = window.setTimeout(() => {
-      if (!isDeleting && isComplete) {
-        setIsDeleting(true);
-        return;
-      }
-
-      if (isDeleting && isEmpty) {
-        setIsDeleting(false);
-        setServiceIndex((index) => (index + 1) % typedServices.length);
-        return;
-      }
-
-      setTypedText((value) =>
-        isDeleting ? current.slice(0, value.length - 1) : current.slice(0, value.length + 1)
-      );
-    }, delay);
-
-    return () => window.clearTimeout(timer);
-  }, [isDeleting, serviceIndex, typedText]);
-
   return (
     <main className="site-shell">
+
       <nav className="topbar" aria-label="Primary navigation">
         <a className="brand" href="#home" aria-label="Skillwyn Labs home">
-          <span className="brand-mark">S</span>
+          <span className="brand-mark">SL</span>
           <span>Skillwyn Labs</span>
         </a>
         <div className="nav-links">
           <a href="#services">Services</a>
           <a href="#work">Work</a>
+          <a href="#process">Process</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
@@ -165,17 +143,24 @@ function App() {
             <span aria-hidden="true" /> Available for selected client builds
           </p>
           <h1 className="hero-heading">
-            <span>We build</span>
-            <span className="typed-line">
-              <strong>{typedText}</strong>
-              <i className="heading-caret" aria-hidden="true" />
-            </span>
+            <span>Building AI Products, Scalable Platforms & Intelligent Systems</span>
           </h1>
           <p className="hero-text">
-            Skillwyn Labs builds AI products, custom AI SaaS products,
-            full-stack websites, landing pages, web apps, mobile apps, and
-            automations for businesses that want modern digital systems.
+            Skillwyn Labs is a product engineering studio building AI-powered
+            products, scalable SaaS platforms, full-stack applications, modern
+            web experiences, and intelligent systems for startups and
+            businesses.
           </p>
+
+          <div className="capability-strip" aria-label="What we build">
+            {capabilities.map((item) => (
+              <span key={item}>
+                <Check size={14} aria-hidden="true" />
+                {item}
+              </span>
+            ))}
+          </div>
+
           <a className="hero-button" href="mailto:hello@skillwynlabs.com">
             Start a project <ArrowRight size={18} aria-hidden="true" />
           </a>
@@ -238,13 +223,15 @@ function App() {
 
       <section id="about" className="post-chat-section">
         <div>
-          <p className="eyebrow">Interfaces for the post-chat era</p>
-          <h2>AI demos impress, then stall. Adoption needs clarity, rhythm, and taste.</h2>
+          <p className="eyebrow">About us</p>
+          <h2>We are a product studio for AI, software, websites, apps, and automation.</h2>
         </div>
         <p>
-          At Skillwyn Labs, we build AI that moves beyond chat: guiding
-          decisions, reducing manual work, and making intelligence feel embedded
-          in real business workflows.
+          Skillwyn Labs helps startups, founders, and businesses turn ideas into
+          scalable digital products. We build AI-powered tools, SaaS platforms,
+          full-stack web applications, intelligent systems, modern landing
+          pages, and custom software focused on real-world usability,
+          performance, and execution.
         </p>
       </section>
 
@@ -261,7 +248,7 @@ function App() {
 
       <section id="services" className="section light-section">
         <div className="section-heading">
-          <p className="eyebrow">Everything you need</p>
+          <p className="eyebrow">Services</p>
           <h2>Everything you need to build great products.</h2>
         </div>
         <div className="service-grid">
@@ -272,6 +259,30 @@ function App() {
               <p>{copy}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section id="process" className="section process-section">
+        <div className="section-heading">
+          <p className="eyebrow">Process</p>
+          <h2>Simple path from idea to launch.</h2>
+        </div>
+        <div className="process-grid">
+          <article>
+            <span>01</span>
+            <h3>Discover</h3>
+            <p>We understand the product vision, workflows, user experience, and technical requirements before defining the system architecture.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Design</h3>
+            <p>We craft modern interfaces, scalable product flows, and intuitive user experiences focused on clarity and usability.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Build</h3>
+            <p>We develop scalable systems, integrations, APIs, and production-ready applications optimized for real-world performance.</p>
+          </article>
         </div>
       </section>
 
@@ -304,6 +315,22 @@ function App() {
               <strong>{name}</strong>
               <p>{title}</p>
               <small>{meta}</small>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="results-section section light-section">
+        <div className="section-heading">
+          <p className="eyebrow">Execution Focused</p>
+          <h2>Building systems that deliver results.</h2>
+        </div>
+        <div className="service-grid">
+          {results.map((item) => (
+            <article className="service-card" key={item.title}>
+              <Check size={25} aria-hidden="true" color="#0b8d78" />
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
             </article>
           ))}
         </div>
@@ -342,8 +369,11 @@ function App() {
           <p className="eyebrow">Book a strategy call</p>
           <h2>Bring your product vision and we’ll shape the build path.</h2>
           <p>
-            Tell us what you want to build: AI SaaS, automation, app, landing
-            page, website, or full-stack platform.
+            Skillwyn Labs is focused on building modern AI products, scalable
+            software platforms, intelligent systems, and digital experiences for
+            ambitious startups and businesses. We combine product thinking,
+            engineering, design, and AI capabilities to build systems that are
+            scalable, practical, and execution-focused.
           </p>
         </div>
         <a className="hero-button" href="mailto:hello@skillwynlabs.com">
