@@ -193,18 +193,28 @@ p {
   margin-top: 0;
 }
 
-h1 {
+.hero-heading {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
   max-width: 980px;
+  min-height: 1.9em;
   margin-bottom: 20px;
   font-size: clamp(3.25rem, 6.2vw, 6.45rem);
   letter-spacing: 0;
   line-height: 0.93;
 }
 
+.heading-static {
+  display: block;
+  white-space: nowrap;
+}
+
 .heading-type {
-  display: inline-block;
-  min-width: 0;
+  display: block;
+  min-height: 0.95em;
   color: rgba(255, 255, 255, 0.58);
+  text-align: center;
 }
 
 .heading-caret {
@@ -676,6 +686,19 @@ h3 {
   h1 {
     font-size: 3.1rem;
     line-height: 0.98;
+  }
+
+  .hero-heading {
+    row-gap: 6px;
+    min-height: 3.1em;
+  }
+
+  .heading-type {
+    white-space: normal;
+  }
+
+  .heading-caret {
+    display: none;
   }
 
   .hero-text {

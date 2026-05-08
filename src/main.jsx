@@ -86,7 +86,7 @@ function App() {
     const current = typedServices[serviceIndex];
     const isComplete = typedText === current;
     const isEmpty = typedText === '';
-    const delay = isComplete && !isDeleting ? 1150 : isDeleting ? 34 : 58;
+    const delay = isComplete && !isDeleting ? 1800 : isDeleting ? 52 : 92;
 
     const timer = window.setTimeout(() => {
       if (!isDeleting && isComplete) {
@@ -131,9 +131,12 @@ function App() {
             <span aria-hidden="true" /> Available for new builds
           </p>
           <p className="eyebrow">Skillwyn Labs</p>
-          <h1>
-            We build <span className="heading-type">{typedText}</span>
-            <i className="heading-caret" aria-hidden="true" />
+          <h1 className="hero-heading">
+            <span className="heading-static">We build</span>
+            <span className="heading-type">
+              {typedText}
+              <i className="heading-caret" aria-hidden="true" />
+            </span>
           </h1>
           <p className="hero-text">
             We are a product studio that builds autonomous AI tools, custom AI
