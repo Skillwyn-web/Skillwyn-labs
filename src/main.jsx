@@ -85,6 +85,14 @@ const featuredProducts = [
       'A premium ecommerce storefront for modern Indian wear with an elegant hero, product-focused navigation, refined visuals, and a clean shopping experience designed to convert visitors into buyers.',
     tags: ['Ecommerce', 'Fashion UI', 'Landing Page', 'Responsive Website'],
   },
+  {
+    title: 'NEWATO',
+    type: 'Autonomous AI Agent Platform',
+    image: '/product-newato.png',
+    brief:
+      'A dark, futuristic AI agent product built around execution: task planning, workflow automation, competitive research, timeline tracking, and autonomous actions across apps, browsers, and files.',
+    tags: ['AI Agent', 'Automation', 'SaaS Platform', 'Dashboard UI'],
+  },
 ];
 
 function App() {
