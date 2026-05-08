@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   ArrowRight,
@@ -67,7 +67,47 @@ const productTypes = [
   'Automation panels',
 ];
 
+const typedServices = [
+  'AI autonomous products',
+  'custom AI SaaS platforms',
+  'full-stack websites',
+  'landing pages',
+  'web apps',
+  'mobile apps',
+  'business automations',
+];
+
 function App() {
+  const [serviceIndex, setServiceIndex] = useState(0);
+  const [typedText, setTypedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = typedServices[serviceIndex];
+    const isComplete = typedText === current;
+    const isEmpty = typedText === '';
+    const delay = isComplete && !isDeleting ? 1150 : isDeleting ? 34 : 58;
+
+    const timer = window.setTimeout(() => {
+      if (!isDeleting && isComplete) {
+        setIsDeleting(true);
+        return;
+      }
+
+      if (isDeleting && isEmpty) {
+        setIsDeleting(false);
+        setServiceIndex((index) => (index + 1) % typedServices.length);
+        return;
+      }
+
+      setTypedText((value) =>
+        isDeleting ? current.slice(0, value.length - 1) : current.slice(0, value.length + 1)
+      );
+    }, delay);
+
+    return () => window.clearTimeout(timer);
+  }, [isDeleting, serviceIndex, typedText, typedServices]);
+
   return (
     <main className="site-shell">
       <nav className="topbar" aria-label="Primary navigation">
@@ -94,6 +134,11 @@ function App() {
           <h1>
             We build AI products, SaaS platforms, websites and automations.
           </h1>
+          <div className="typewriter-line" aria-label="Rotating services">
+            <span>We build</span>
+            <strong>{typedText}</strong>
+            <i aria-hidden="true" />
+          </div>
           <p className="hero-text">
             We are a product studio that builds autonomous AI tools, custom AI
             SaaS products, full-stack websites, landing pages, web apps, mobile
