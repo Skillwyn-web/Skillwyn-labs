@@ -9,7 +9,6 @@ import {
   Cpu,
   Globe,
   MonitorSmartphone,
-  Smartphone,
   Workflow,
 } from 'lucide-react';
 import './styles.css';
@@ -77,10 +76,22 @@ const typedServices = [
   'business automations',
 ];
 
+const featuredProducts = [
+  {
+    title: 'PRAMILA',
+    type: 'Fashion Ecommerce Website',
+    image: '/product-pramila.png',
+    brief:
+      'A premium ecommerce storefront for modern Indian wear with an elegant hero, product-focused navigation, refined visuals, and a clean shopping experience designed to convert visitors into buyers.',
+    tags: ['Ecommerce', 'Fashion UI', 'Landing Page', 'Responsive Website'],
+  },
+];
+
 function App() {
   const [serviceIndex, setServiceIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [activeProduct, setActiveProduct] = useState(featuredProducts[0]);
 
   useEffect(() => {
     const current = typedServices[serviceIndex];
@@ -115,8 +126,8 @@ function App() {
           <span className="brand-mark">SL</span>
         </a>
         <div className="nav-links">
+          <a href="#featured">Featured</a>
           <a href="#services">Services</a>
-          <a href="#products">Products</a>
           <a href="#process">Process</a>
           <a href="#contact">Contact</a>
         </div>
@@ -164,40 +175,41 @@ function App() {
           </div>
         </div>
 
-        <div className="showcase-wall" aria-label="Product previews">
-          <article className="preview-card analytics-card">
-            <span>Automation System</span>
-            <strong>Lead engine</strong>
-            <div className="bars">
-              <i />
-              <i />
-              <i />
-            </div>
-          </article>
-          <article className="preview-card phone-card">
-            <Smartphone size={28} aria-hidden="true" />
-            <strong>App UI</strong>
-            <span>Mobile-first product flows</span>
-          </article>
-          <article className="preview-card hero-preview">
-            <img src="/ai-product-hero.png" alt="AI product ecosystem preview" />
-            <div>
-              <span>AI SaaS Platform</span>
-              <strong>Custom product dashboard</strong>
-            </div>
-          </article>
-          <article className="preview-card automation-card">
-            <Workflow size={26} aria-hidden="true" />
-            <strong>Automation</strong>
-            <span>APIs, CRMs, AI models</span>
-          </article>
-          <article className="preview-card compact-card">
-            <Bot size={24} aria-hidden="true" />
-            <strong>AI Agent</strong>
-            <span>Always-on assistant</span>
-          </article>
-          <div className="cursor-tag">Skillwyn</div>
+      </section>
+
+      <section id="featured" className="featured-products">
+        <div className="section-heading">
+          <p className="eyebrow">Featured Products</p>
+          <h2>Projects we build for real businesses.</h2>
         </div>
+
+        <div className="featured-grid">
+          {featuredProducts.map((product) => (
+            <button
+              className={`product-card ${activeProduct.title === product.title ? 'active' : ''}`}
+              key={product.title}
+              type="button"
+              onClick={() => setActiveProduct(product)}
+            >
+              <img src={product.image} alt={`${product.title} website preview`} />
+              <span>{product.type}</span>
+              <strong>{product.title}</strong>
+            </button>
+          ))}
+        </div>
+
+        <article className="product-brief">
+          <div>
+            <p className="eyebrow">Project Brief</p>
+            <h3>{activeProduct.title}</h3>
+            <p>{activeProduct.brief}</p>
+          </div>
+          <div className="brief-tags">
+            {activeProduct.tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+        </article>
       </section>
 
       <section className="about-panel">
