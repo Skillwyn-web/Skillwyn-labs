@@ -249,6 +249,18 @@ function App() {
   const [serviceIndex, setServiceIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const current = typedServices[serviceIndex];
@@ -281,8 +293,8 @@ function App() {
       <SmoothScroll />
       <CustomCursor />
 
-      <nav className="topbar" aria-label="Primary navigation">
-        <a className="brand" href="#home" aria-label="Skillwyn Labs home">
+      <nav className={`topbar ${mobileMenuOpen ? 'mobile-open' : ''}`} aria-label="Primary navigation">
+        <a className="brand" href="#home" aria-label="Skillwyn Labs home" onClick={() => setMobileMenuOpen(false)}>
           <img className="brand-logo brand-logo-wide" src="/skillwyn-white-logo.png" alt="Skillwyn" />
         </a>
         <div className="nav-links">
@@ -294,7 +306,29 @@ function App() {
         <a className="nav-cta" href="mailto:hello@skillwynlabs.com">
           Book a call
         </a>
+        <button 
+          className="hamburger-toggle" 
+          aria-label="Toggle menu" 
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          <span className="bar" />
+          <span className="bar" />
+          <span className="bar" />
+        </button>
       </nav>
+
+      {/* Mobile Menu Drawer Overlay */}
+      <div className={`mobile-menu-drawer ${mobileMenuOpen ? 'is-active' : ''}`}>
+        <div className="mobile-menu-links">
+          <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
+          <a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
+          <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
+          <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+          <a className="mobile-cta" href="mailto:hello@skillwynlabs.com" onClick={() => setMobileMenuOpen(false)}>
+            Book a call
+          </a>
+        </div>
+      </div>
 
       <section id="home" className="hero">
         <div className="hero-copy">
@@ -321,16 +355,40 @@ function App() {
         <div className="hero-visual" aria-hidden="true">
           <div className="work-showcase">
             <div className="showcase-glow" />
-            <article className="showcase-frame pramila-frame">
-              <img src="/product-pramila.png" alt="" />
+            <article className="showcase-frame pramila-frame" style={{ '--hover-glow': 'rgba(241, 210, 138, 0.3)' }}>
+              <div className="window-header">
+                <div className="window-dots">
+                  <span className="dot dot-red" />
+                  <span className="dot dot-yellow" />
+                  <span className="dot dot-green" />
+                </div>
+                <div className="window-address">pramila.co</div>
+              </div>
+              <img src="/product-pramila.png" alt="Pramila Storefront" />
             </article>
 
-            <article className="showcase-frame newato-frame">
-              <img src="/product-newato.png" alt="" />
+            <article className="showcase-frame newato-frame" style={{ '--hover-glow': 'rgba(65, 170, 255, 0.3)' }}>
+              <div className="window-header">
+                <div className="window-dots">
+                  <span className="dot dot-red" />
+                  <span className="dot dot-yellow" />
+                  <span className="dot dot-green" />
+                </div>
+                <div className="window-address">newato.world</div>
+              </div>
+              <img src="/product-newato.png" alt="Newato Dashboard" />
             </article>
 
-            <article className="showcase-frame ai-frame">
-              <img src="/product-kaib.svg" alt="" />
+            <article className="showcase-frame ai-frame" style={{ '--hover-glow': 'rgba(255, 255, 255, 0.25)' }}>
+              <div className="window-header">
+                <div className="window-dots">
+                  <span className="dot dot-red" />
+                  <span className="dot dot-yellow" />
+                  <span className="dot dot-green" />
+                </div>
+                <div className="window-address">kaib.finance</div>
+              </div>
+              <img src="/product-kaib.svg" alt="Kaib App" />
             </article>
           </div>
         </div>
