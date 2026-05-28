@@ -321,6 +321,41 @@ function SmoothScroll() {
 
 function ScrollReveal() {
   useEffect(() => {
+    const autoRevealSelectors = [
+      '.hero-copy',
+      '.hero-visual',
+      '.logo-cloud',
+      '.post-chat-section > div',
+      '.section-heading',
+      '.service-card',
+      '.process-grid article',
+      '.result-card',
+      '.product-card',
+      '.resource-section > div',
+      '.testimonial-section',
+      '.cta-section > div',
+      '.cta-section > a',
+      '.site-footer',
+    ].join(', ');
+
+    document.querySelectorAll(autoRevealSelectors).forEach((element, index) => {
+      if (!element.hasAttribute('data-reveal')) {
+        element.setAttribute('data-reveal', '');
+      }
+
+      element.classList.add('scroll-reveal');
+
+      if (!element.classList.contains('reveal-left') && !element.classList.contains('reveal-right')) {
+        element.classList.add('reveal-up');
+      }
+
+      if (!element.style.getPropertyValue('--reveal-delay')) {
+        const siblingIndex = Array.from(element.parentElement?.children || []).indexOf(element);
+        const delayIndex = siblingIndex >= 0 ? siblingIndex : index;
+        element.style.setProperty('--reveal-delay', `${Math.min(delayIndex, 5) * 75}ms`);
+      }
+    });
+
     const elements = document.querySelectorAll('[data-reveal]');
     if (!elements.length) {
       return undefined;
