@@ -3,17 +3,24 @@ import { createRoot } from 'react-dom/client';
 import Lenis from 'lenis';
 import {
   ArrowRight,
-  Bot,
-  BrainCircuit,
-  Check,
-  Code2,
+  BarChart3,
   Cpu,
   Globe,
   Layers3,
+  Lightbulb,
+  MessageSquare,
   MonitorSmartphone,
+  PenTool,
+  Plug,
+  Repeat,
+  Rocket,
+  Smartphone,
+  UsersRound,
   Workflow,
 } from 'lucide-react';
 import './styles.css';
+
+const bookingUrl = 'https://calendar.app.google/vs4UnjU6yeEcChnL7';
 
 const typedServices = [
   'autonomous AI products',
@@ -66,34 +73,49 @@ const aiExperiences = [
 
 const services = [
   {
-    icon: BrainCircuit,
-    title: 'AI Product Development',
-    copy: 'We build AI-powered products, intelligent tools, copilots, and scalable SaaS platforms designed around modern workflows and real business use cases.',
+    icon: MonitorSmartphone,
+    title: 'Website design & development',
+    copy: 'Fast, modern websites, landing pages, ecommerce stores, and company portfolios built to look polished and convert visitors.',
   },
   {
-    icon: Code2,
-    title: 'Full-Stack Applications',
-    copy: 'Custom web platforms, dashboards, APIs, internal systems, and scalable backend architecture built for performance and long-term growth.',
+    icon: Smartphone,
+    title: 'Mobile app development',
+    copy: 'Android and iOS apps, plus white-label apps for companies that want their own branded app without building from scratch.',
   },
   {
-    icon: Layers3,
-    title: 'Product Design & User Experience',
-    copy: 'Clean interfaces, product-focused UX, strong visual systems, and modern digital experiences designed for usability and conversion.',
+    icon: MessageSquare,
+    title: 'AI-powered tools & chatbots',
+    copy: 'Customer support bots, lead qualification bots, internal AI tools, WhatsApp automation, auto-replies, and smart flows.',
   },
   {
     icon: Workflow,
-    title: 'Intelligent Systems & Automation',
-    copy: 'Execution-focused systems integrating AI models, workflows, APIs, and operational logic into streamlined digital experiences.',
+    title: 'Business process automation',
+    copy: 'Replace manual WhatsApp chains, Excel tracking, and phone coordination with automated digital systems that save daily hours.',
   },
   {
-    icon: MonitorSmartphone,
-    title: 'Websites, Apps & Landing Pages',
-    copy: 'High-converting portfolio sites, app interfaces, mobile-first web apps, and landing pages with polished responsive experiences.',
+    icon: BarChart3,
+    title: 'Dashboards & reporting systems',
+    copy: "Live business dashboards for owners and managers to track sales, inventory, operations, and performance without asking anyone.",
   },
   {
-    icon: Bot,
-    title: 'AI Agent Interfaces',
-    copy: 'Interfaces for agents that plan, summarize, route, decide, and execute real business tasks with clear user control.',
+    icon: UsersRound,
+    title: 'CRM & lead management systems',
+    copy: 'Track every lead, follow up automatically, and never lose customer inquiries. Especially useful for real estate, interiors, and hospitality.',
+  },
+  {
+    icon: Layers3,
+    title: 'White-label SaaS products',
+    copy: 'Build one software product and sell it to multiple companies under their own branding, with subscriptions or one-time pricing.',
+  },
+  {
+    icon: Repeat,
+    title: 'Recurring revenue model',
+    copy: 'Create products and systems that keep earning through monthly subscriptions, retainers, renewals, and long-term client accounts.',
+  },
+  {
+    icon: Plug,
+    title: 'Integrations & API connections',
+    copy: "Connect systems that do not talk to each other, like Shopify to WhatsApp, CRM to email, or payments to accounting.",
   },
 ];
 
@@ -103,6 +125,7 @@ const featuredProducts = [
     sector: 'Fashion Ecommerce',
     image: '/product-pramila.png',
     url: 'https://pramila-chi.vercel.app/',
+    cta: 'Open project',
     summary:
       'A premium ecommerce storefront for modern Indian wear with an elegant hero, product-focused navigation, refined visuals, and a clean shopping experience designed to convert visitors into buyers.',
     tags: ['Ecommerce', 'Fashion UI', 'Landing Page', 'Responsive Website'],
@@ -112,27 +135,74 @@ const featuredProducts = [
     sector: 'AI Execution System',
     image: '/product-newato.png',
     url: 'https://newato.world/',
+    cta: 'Open project',
     summary:
       'A next-generation AI execution system designed around intelligent workflows, task orchestration, browser interaction, operational tooling, and autonomous multi-step actions across modern digital environments.',
     tags: ['AI Agent', 'Task Orchestration', 'Automation', 'Intelligent Workflows'],
+  },
+  {
+    title: 'FLOWPILOT',
+    sector: 'WhatsApp Automation',
+    image: '/product-flowpilot.png',
+    url: '#contact',
+    cta: 'Plan similar',
+    summary:
+      'A smart automation dashboard for WhatsApp replies, lead qualification, customer support queues, and AI-powered message flows for service businesses.',
+    tags: ['WhatsApp Automation', 'AI Replies', 'Lead Qualification', 'Smart Flows'],
+  },
+  {
+    title: 'LEADNEST',
+    sector: 'CRM System',
+    image: '/product-leadnest.png',
+    url: '#contact',
+    cta: 'Plan similar',
+    summary:
+      'A CRM and lead management system for tracking inquiries, follow-ups, pipelines, reminders, and customer conversations from one clean workspace.',
+    tags: ['CRM', 'Lead Tracking', 'Follow-ups', 'Sales Pipeline'],
+  },
+  {
+    title: 'OPSBRIDGE',
+    sector: 'Business Automation',
+    image: '/product-opsbridge.png',
+    url: '#contact',
+    cta: 'Plan similar',
+    summary:
+      'An operations automation hub that connects WhatsApp, ecommerce, CRM, payments, inventory, email, and accounting into one workflow system.',
+    tags: ['API Integrations', 'Business Automation', 'Operations', 'Sync Workflows'],
+  },
+  {
+    title: 'BRANDSUITE',
+    sector: 'White-label SaaS',
+    image: '/product-brandsuite.png',
+    url: '#contact',
+    cta: 'Plan similar',
+    summary:
+      'A white-label SaaS admin system where companies can manage branding, client workspaces, subscriptions, mobile previews, and product settings.',
+    tags: ['White-label SaaS', 'Subscriptions', 'Branding', 'Admin Dashboard'],
   },
 ];
 
 const processSteps = [
   {
     number: '01',
+    icon: Lightbulb,
     title: 'Discover',
-    copy: 'We understand the product vision, workflows, user experience, and technical requirements before defining the system architecture.',
+    kicker: 'Clarity first',
+    copy: 'We map the idea, users, workflow, business goal, and technical scope so the build starts with a clear direction.',
   },
   {
     number: '02',
+    icon: PenTool,
     title: 'Design',
-    copy: 'We craft modern interfaces, scalable product flows, and intuitive user experiences focused on clarity and usability.',
+    kicker: 'Flows + UI',
+    copy: 'We shape the screens, user journey, system logic, and visual direction before development begins.',
   },
   {
     number: '03',
+    icon: Rocket,
     title: 'Build',
-    copy: 'We develop scalable systems, integrations, APIs, and production-ready applications optimized for real-world performance.',
+    kicker: 'Launch ready',
+    copy: 'We develop, integrate, test, and deploy a clean working product that is ready for real users and daily operations.',
   },
 ];
 
@@ -158,6 +228,10 @@ const results = [
 const portfolioRows = [
   ['AI', 'NEWATO', 'AI that executes across workflows', 'AI Experience • SaaS UI'],
   ['ECOM', 'PRAMILA', 'Modern Indian wear ecommerce presence', 'Website • Storefront'],
+  ['AUTO', 'FLOWPILOT', 'WhatsApp replies and lead automation', 'AI Bots - Smart Flows'],
+  ['CRM', 'LEADNEST', 'Lead tracking and follow-up system', 'CRM - Sales Pipeline'],
+  ['OPS', 'OPSBRIDGE', 'Connected business workflow automation', 'APIs - Integrations'],
+  ['SAAS', 'BRANDSUITE', 'White-label SaaS admin platform', 'Subscriptions - Branding'],
 ];
 
 function CustomCursor() {
@@ -245,14 +319,52 @@ function SmoothScroll() {
   return null;
 }
 
+function ScrollReveal() {
+  useEffect(() => {
+    const elements = document.querySelectorAll('[data-reveal]');
+    if (!elements.length) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.22,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return null;
+}
+
 function App() {
   const [serviceIndex, setServiceIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [schedulerOpen, setSchedulerOpen] = useState(false);
+
+  const openScheduler = () => {
+    setMobileMenuOpen(false);
+    setSchedulerOpen(true);
+  };
+
+  const closeScheduler = () => setSchedulerOpen(false);
 
   useEffect(() => {
-    if (mobileMenuOpen) {
+    if (mobileMenuOpen || schedulerOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -260,7 +372,7 @@ function App() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [mobileMenuOpen]);
+  }, [mobileMenuOpen, schedulerOpen]);
 
   useEffect(() => {
     const current = typedServices[serviceIndex];
@@ -291,6 +403,7 @@ function App() {
   return (
     <main className="site-shell">
       <SmoothScroll />
+      <ScrollReveal />
       <CustomCursor />
 
       <nav className={`topbar ${mobileMenuOpen ? 'mobile-open' : ''}`} aria-label="Primary navigation">
@@ -298,14 +411,14 @@ function App() {
           <img className="brand-logo brand-logo-wide" src="/skillwyn-white-logo.png" alt="Skillwyn" />
         </a>
         <div className="nav-links">
-          <a href="#services">Services</a>
+          <a href="#services">Things we do</a>
           <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
-        <a className="nav-cta" href="mailto:hello@skillwynlabs.com">
+        <button className="nav-cta" type="button" onClick={openScheduler}>
           Book a call
-        </a>
+        </button>
         <button 
           className="hamburger-toggle" 
           aria-label="Toggle menu" 
@@ -320,15 +433,42 @@ function App() {
       {/* Mobile Menu Drawer Overlay */}
       <div className={`mobile-menu-drawer ${mobileMenuOpen ? 'is-active' : ''}`}>
         <div className="mobile-menu-links">
-          <a href="#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
+          <a href="#services" onClick={() => setMobileMenuOpen(false)}>Things we do</a>
           <a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
           <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
-          <a className="mobile-cta" href="mailto:hello@skillwynlabs.com" onClick={() => setMobileMenuOpen(false)}>
+          <button className="mobile-cta" type="button" onClick={openScheduler}>
             Book a call
-          </a>
+          </button>
         </div>
       </div>
+
+      {schedulerOpen && (
+        <div className="scheduler-modal" role="dialog" aria-modal="true" aria-labelledby="scheduler-title">
+          <button className="scheduler-backdrop" type="button" aria-label="Close scheduler" onClick={closeScheduler} />
+          <div className="scheduler-panel calendar-panel">
+            <div className="scheduler-head">
+              <div>
+                <p className="eyebrow">Google Calendar</p>
+                <h2 id="scheduler-title">Book your strategy call.</h2>
+                <p>Choose an available slot below. Google Calendar will send the invite and confirmation.</p>
+              </div>
+              <button className="scheduler-close" type="button" aria-label="Close scheduler" onClick={closeScheduler}>
+                ×
+              </button>
+            </div>
+            <div className="scheduler-frame-wrap">
+              <iframe className="scheduler-frame" src={bookingUrl} title="Skillwyn Labs Google Calendar booking" />
+            </div>
+            <div className="scheduler-footer">
+              <span>Having trouble viewing the scheduler?</span>
+              <a className="scheduler-open-link" href={bookingUrl} rel="noreferrer" target="_blank">
+                Open in Google Calendar <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       <section id="home" className="hero">
         <div className="hero-copy">
@@ -347,9 +487,9 @@ function App() {
             full-stack websites, landing pages, web apps, mobile apps, and
             automations for businesses that want modern digital systems.
           </p>
-          <a className="hero-button" href="mailto:hello@skillwynlabs.com">
+          <button className="hero-button" type="button" onClick={openScheduler}>
             Start a project <ArrowRight size={18} aria-hidden="true" />
-          </a>
+          </button>
         </div>
 
         <div className="hero-visual" aria-hidden="true">
@@ -407,44 +547,35 @@ function App() {
           <p className="eyebrow">About us</p>
           <h2>We are a product studio for AI, software, websites, apps, and automation.</h2>
         </div>
-        <p>
-          Skillwyn Labs helps startups, founders, and businesses turn ideas into
-          scalable digital products. We build AI-powered tools, SaaS platforms,
-          full-stack web applications, intelligent systems, modern landing
-          pages, and custom software focused on real-world usability,
-          performance, and execution.
-        </p>
-      </section>
-
-      <section className="ai-experience-grid">
-        {aiExperiences.map((item) => (
-          <article key={item.title}>
-            <div className="flip-card-inner">
-              <div className="flip-face flip-front">
-                <span>{item.label}</span>
-                <h3>{item.title}</h3>
-                <p>{item.meta}</p>
-                <small>{item.status}</small>
-              </div>
-              <div className="flip-face flip-back">
-                <span>{item.label}</span>
-                <h3>{item.backTitle}</h3>
-                <p>{item.backCopy}</p>
-                <ul>
-                  {item.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </div>
+        <div className="about-copy">
+          <p>
+            Skillwyn Labs helps startups, founders, and businesses turn ideas into
+            scalable digital products. We build AI-powered tools, SaaS platforms,
+            full-stack web applications, intelligent systems, modern landing
+            pages, and custom software focused on real-world usability,
+            performance, and execution.
+          </p>
+          <div className="social-proof-card">
+            <div>
+              <span>32K+</span>
+              <small>Instagram community</small>
             </div>
-          </article>
-        ))}
+            <p>
+              Built around the same practical tech, AI, and product-building
+              mindset shared through Codewithyadh.
+            </p>
+            <a href="https://www.instagram.com/codewithyash3/" rel="noreferrer" target="_blank">
+              <Globe size={18} aria-hidden="true" />
+              Visit Codewithyash
+            </a>
+          </div>
+        </div>
       </section>
 
       <section id="services" className="section light-section">
         <div className="section-heading">
-          <p className="eyebrow">Services</p>
-          <h2>Everything you need to build great products.</h2>
+          <p className="eyebrow">Labs</p>
+          <h2>Things we do.</h2>
         </div>
         <div className="service-grid">
           {services.map(({ icon: Icon, title, copy }, index) => (
@@ -468,7 +599,11 @@ function App() {
         <div className="process-grid">
           {processSteps.map((item) => (
             <article key={item.number}>
-              <span>{item.number}</span>
+              <div className="process-card-top">
+                <span>{item.number}</span>
+                <item.icon size={22} aria-hidden="true" />
+              </div>
+              <small>{item.kicker}</small>
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
             </article>
@@ -482,31 +617,37 @@ function App() {
           <h2>Shaping products from early ideas to client-ready builds.</h2>
         </div>
         <div className="featured-grid">
-          {featuredProducts.map((product) => (
+          {featuredProducts.map((product, index) => (
             <a
-              className="product-card"
+              className={`product-card reveal-card reveal-${index % 2 === 0 ? 'left' : 'right'}`}
+              data-reveal
               href={product.url}
               key={product.title}
-              rel="noreferrer"
-              target="_blank"
+              rel={product.url.startsWith('http') ? 'noreferrer' : undefined}
+              style={{ '--reveal-delay': `${Math.min(index % 4, 3) * 120}ms` }}
+              target={product.url.startsWith('http') ? '_blank' : undefined}
             >
-              <img src={product.image} alt={`${product.title} website preview`} />
-              <div className="project-url-pop">
-                <span>{product.title}</span>
-                <strong>Open project</strong>
-                <ArrowRight size={14} aria-hidden="true" />
+              <div className="product-preview">
+                <img src={product.image} alt={`${product.title} website preview`} />
+                <div className="project-url-pop">
+                  <span>{product.title}</span>
+                  <strong>{product.cta}</strong>
+                  <ArrowRight size={14} aria-hidden="true" />
+                </div>
+              </div>
+              <div className="product-card-details">
+                <div>
+                  <span>{product.sector}</span>
+                  <h3>{product.title}</h3>
+                </div>
+                <p>{product.summary}</p>
+                <div className="product-tags">
+                  {product.tags.map((tag) => (
+                    <small key={tag}>{tag}</small>
+                  ))}
+                </div>
               </div>
             </a>
-          ))}
-        </div>
-        <div className="portfolio-list">
-          {portfolioRows.map(([type, name, title, meta]) => (
-            <article key={name}>
-              <span>{type}</span>
-              <strong>{name}</strong>
-              <p>{title}</p>
-              <small>{meta}</small>
-            </article>
           ))}
         </div>
       </section>
@@ -516,10 +657,15 @@ function App() {
           <p className="eyebrow">Execution Focused</p>
           <h2>Building systems that deliver results.</h2>
         </div>
-        <div className="service-grid">
-          {results.map((item) => (
-            <article className="service-card" key={item.title}>
-              <Check size={25} aria-hidden="true" />
+        <div className="results-grid">
+          {results.map((item, index) => (
+            <article
+              className="result-card reveal-card reveal-left"
+              data-reveal
+              key={item.title}
+              style={{ '--reveal-delay': `${index * 110}ms` }}
+            >
+              <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{item.title}</h3>
               <p>{item.copy}</p>
             </article>
@@ -538,9 +684,11 @@ function App() {
           <a href="#contact">Explore a build</a>
         </div>
         <div className="resource-visual">
-          <Cpu size={70} />
-          <Globe size={44} />
-          <Workflow size={54} />
+          <img src="/useful-ai-visual.png" alt="AI automation dashboard and workflow visual" />
+          <div className="resource-visual-badge">
+            <Cpu size={18} aria-hidden="true" />
+            <span>AI workflows</span>
+          </div>
         </div>
       </section>
 
@@ -567,13 +715,57 @@ function App() {
             scalable, practical, and execution-focused.
           </p>
         </div>
-        <a className="hero-button" href="mailto:hello@skillwynlabs.com">
+        <button className="hero-button" type="button" onClick={openScheduler}>
           Book a call <ArrowRight size={18} aria-hidden="true" />
-        </a>
+        </button>
       </section>
+
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <a className="footer-logo" href="#home" aria-label="Skillwyn Labs home">
+              <img src="/skillwyn-white-logo.png" alt="Skillwyn Labs" />
+            </a>
+            <p>
+              AI products, websites, apps, dashboards, CRM systems, and
+              automation workflows for modern businesses.
+            </p>
+            <a className="footer-social" href="https://www.instagram.com/codewithyash3/" rel="noreferrer" target="_blank">
+              <Globe size={16} aria-hidden="true" />
+              Codewithyash · 32K+ community
+            </a>
+          </div>
+
+          <div className="footer-links">
+            <div>
+              <span>Navigate</span>
+              <a href="#services">Things we do</a>
+              <a href="#work">Work</a>
+              <a href="#about">About</a>
+              <a href="#contact">Contact</a>
+            </div>
+            <div>
+              <span>Builds</span>
+              <a href="#services">AI automation</a>
+              <a href="#services">Web & mobile apps</a>
+              <a href="#services">CRM dashboards</a>
+              <a href="#services">White-label SaaS</a>
+            </div>
+            <div>
+              <span>Contact</span>
+              <a href="mailto:teams@skillwyn.com">teams@skillwyn.com</a>
+              <a href="mailto:teams@skillwyn.com">Book a strategy call</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <span>© 2026 Skillwyn Labs. All rights reserved.</span>
+          <span>Designed and built for execution-focused teams.</span>
+        </div>
+      </footer>
     </main>
   );
 }
 
 createRoot(document.getElementById('root')).render(<App />);
-
