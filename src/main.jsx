@@ -590,20 +590,6 @@ function App() {
             pages, and custom software focused on real-world usability,
             performance, and execution.
           </p>
-          <div className="social-proof-card">
-            <div>
-              <span>32K+</span>
-              <small>Instagram community</small>
-            </div>
-            <p>
-              Built around the same practical tech, AI, and product-building
-              mindset shared through Codewithyadh.
-            </p>
-            <a href="https://www.instagram.com/codewithyash3/" rel="noreferrer" target="_blank">
-              <Globe size={18} aria-hidden="true" />
-              Visit Codewithyash
-            </a>
-          </div>
         </div>
       </section>
 
