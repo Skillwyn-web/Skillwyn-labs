@@ -10,11 +10,13 @@ import {
   Lightbulb,
   MessageSquare,
   MonitorSmartphone,
+  Moon,
   PenTool,
   Plug,
   Repeat,
   Rocket,
   Smartphone,
+  Sun,
   UsersRound,
   Workflow,
 } from 'lucide-react';
@@ -75,46 +77,55 @@ const services = [
   {
     icon: MonitorSmartphone,
     title: 'Website design & development',
+    url: '/website-development/',
     copy: 'Fast, modern websites, landing pages, ecommerce stores, and company portfolios built to look polished and convert visitors.',
   },
   {
     icon: Smartphone,
     title: 'Mobile app development',
+    url: '/app-development/',
     copy: 'Android and iOS apps, plus white-label apps for companies that want their own branded app without building from scratch.',
   },
   {
     icon: MessageSquare,
     title: 'AI-powered tools & chatbots',
+    url: '/ai-product-development/',
     copy: 'Customer support bots, lead qualification bots, internal AI tools, WhatsApp automation, auto-replies, and smart flows.',
   },
   {
     icon: Workflow,
     title: 'Business process automation',
+    url: '/business-automation/',
     copy: 'Replace manual WhatsApp chains, Excel tracking, and phone coordination with automated digital systems that save daily hours.',
   },
   {
     icon: BarChart3,
     title: 'Dashboards & reporting systems',
+    url: '/crm-dashboard-development/',
     copy: "Live business dashboards for owners and managers to track sales, inventory, operations, and performance without asking anyone.",
   },
   {
     icon: UsersRound,
     title: 'CRM & lead management systems',
+    url: '/crm-dashboard-development/',
     copy: 'Track every lead, follow up automatically, and never lose customer inquiries. Especially useful for real estate, interiors, and hospitality.',
   },
   {
     icon: Layers3,
     title: 'White-label SaaS products',
+    url: '/saas-development/',
     copy: 'Build one software product and sell it to multiple companies under their own branding, with subscriptions or one-time pricing.',
   },
   {
     icon: Repeat,
     title: 'Recurring revenue model',
+    url: '/saas-development/',
     copy: 'Create products and systems that keep earning through monthly subscriptions, retainers, renewals, and long-term client accounts.',
   },
   {
     icon: Plug,
     title: 'Integrations & API connections',
+    url: '/business-automation/',
     copy: "Connect systems that do not talk to each other, like Shopify to WhatsApp, CRM to email, or payments to accounting.",
   },
 ];
@@ -319,6 +330,72 @@ function SmoothScroll() {
   return null;
 }
 
+function SiteLoader() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let currentProgress = 0;
+    const progressTimer = window.setInterval(() => {
+      currentProgress = Math.min(currentProgress + Math.random() * 12 + 4, 92);
+      setProgress(currentProgress);
+    }, 170);
+
+    const minTimer = window.setTimeout(() => {
+      setProgress(100);
+      setIsLoaded(true);
+    }, 2200);
+
+    const handleLoad = () => {
+      window.setTimeout(() => {
+        setProgress(100);
+        setIsLoaded(true);
+      }, 2200);
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad, { once: true });
+    }
+
+    return () => {
+      window.clearInterval(progressTimer);
+      window.clearTimeout(minTimer);
+      window.removeEventListener('load', handleLoad);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded) {
+      return undefined;
+    }
+
+    const hideTimer = window.setTimeout(() => setIsHidden(true), 620);
+    return () => window.clearTimeout(hideTimer);
+  }, [isLoaded]);
+
+  if (isHidden) {
+    return null;
+  }
+
+  return (
+    <div className={`site-loader ${isLoaded ? 'is-loaded' : ''}`} role="status" aria-live="polite">
+      <div className="loader-orbit" aria-hidden="true">
+        <span className="loader-ring loader-ring-one" />
+        <span className="loader-ring loader-ring-two" />
+        <img src="/favicon-source.png" alt="" />
+      </div>
+      <div className="loader-copy">
+        <span>Skillwyn Labs</span>
+        <i style={{ '--loader-progress': `${progress}%` }} aria-hidden="true" />
+      </div>
+      <span className="sr-only">Loading Skillwyn Labs</span>
+    </div>
+  );
+}
+
 function ScrollReveal() {
   useEffect(() => {
     const autoRevealSelectors = [
@@ -390,13 +467,32 @@ function App() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [schedulerOpen, setSchedulerOpen] = useState(false);
+  const [promoPrompt, setPromoPrompt] = useState('');
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = window.localStorage.getItem('skillwyn-theme');
+    return savedTheme === 'dark' ? 'dark' : 'light';
+  });
+
+  const isDarkTheme = theme === 'dark';
 
   const openScheduler = () => {
     setMobileMenuOpen(false);
+    setPromoPrompt('');
     setSchedulerOpen(true);
   };
 
   const closeScheduler = () => setSchedulerOpen(false);
+  const toggleTheme = () => setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'));
+  const openPromoScheduler = (prompt) => {
+    setMobileMenuOpen(false);
+    setPromoPrompt(prompt);
+    setSchedulerOpen(true);
+  };
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem('skillwyn-theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     if (mobileMenuOpen || schedulerOpen) {
@@ -408,6 +504,50 @@ function App() {
       document.body.style.overflow = '';
     };
   }, [mobileMenuOpen, schedulerOpen]);
+
+  useEffect(() => {
+    const shownPrompts = {
+      timed: window.sessionStorage.getItem('skillwyn-timed-promo') === 'shown',
+      scroll: window.sessionStorage.getItem('skillwyn-scroll-promo') === 'shown',
+    };
+
+    const showTimedPrompt = () => {
+      if (shownPrompts.timed || schedulerOpen) {
+        return;
+      }
+
+      shownPrompts.timed = true;
+      window.sessionStorage.setItem('skillwyn-timed-promo', 'shown');
+      openPromoScheduler('Launch offer: book a free strategy call and get a clear build roadmap for your AI, website, app, or automation project.');
+    };
+
+    const timer = window.setTimeout(showTimedPrompt, 10000);
+
+    const handleScroll = () => {
+      if (shownPrompts.scroll || schedulerOpen) {
+        return;
+      }
+
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (scrollableHeight <= 0) {
+        return;
+      }
+
+      const progress = window.scrollY / scrollableHeight;
+      if (progress >= 0.5) {
+        shownPrompts.scroll = true;
+        window.sessionStorage.setItem('skillwyn-scroll-promo', 'shown');
+        openPromoScheduler('Still exploring? The current launch offer includes a free consultation to shape your product or automation plan.');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [schedulerOpen]);
 
   useEffect(() => {
     const current = typedServices[serviceIndex];
@@ -436,7 +576,9 @@ function App() {
   }, [isDeleting, serviceIndex, typedText]);
 
   return (
-    <main className="site-shell">
+    <>
+    <SiteLoader />
+    <main className="site-shell" data-theme={theme}>
       <SmoothScroll />
       <ScrollReveal />
       <CustomCursor />
@@ -451,9 +593,20 @@ function App() {
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
-        <button className="nav-cta" type="button" onClick={openScheduler}>
-          Book a call
-        </button>
+        <div className="nav-actions">
+          <button
+            className="theme-toggle"
+            type="button"
+            aria-label={`Switch to ${isDarkTheme ? 'light' : 'dark'} theme`}
+            aria-pressed={isDarkTheme}
+            onClick={toggleTheme}
+          >
+            {isDarkTheme ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
+          </button>
+          <button className="nav-cta" type="button" onClick={openScheduler}>
+            Book a call
+          </button>
+        </div>
         <button 
           className="hamburger-toggle" 
           aria-label="Toggle menu" 
@@ -472,6 +625,10 @@ function App() {
           <a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
           <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
+          <button className="mobile-theme-toggle" type="button" onClick={toggleTheme}>
+            {isDarkTheme ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
+            {isDarkTheme ? 'Light theme' : 'Dark theme'}
+          </button>
           <button className="mobile-cta" type="button" onClick={openScheduler}>
             Book a call
           </button>
@@ -487,6 +644,7 @@ function App() {
                 <p className="eyebrow">Google Calendar</p>
                 <h2 id="scheduler-title">Book your strategy call.</h2>
                 <p>Choose an available slot below. Google Calendar will send the invite and confirmation.</p>
+                {promoPrompt && <p className="scheduler-promo">{promoPrompt}</p>}
               </div>
               <button className="scheduler-close" type="button" aria-label="Close scheduler" onClick={closeScheduler}>
                 ×
@@ -507,8 +665,8 @@ function App() {
 
       <section id="home" className="hero">
         <div className="hero-copy">
-          <p className="availability">
-            <span aria-hidden="true" /> Available for selected client builds
+          <p className="offer-strip">
+            <span>Launch offer</span> Free strategy call + product roadmap for early builds.
           </p>
           <h1 className="hero-heading">
             <span>We build</span>
@@ -599,15 +757,15 @@ function App() {
           <h2>Things we do.</h2>
         </div>
         <div className="service-grid">
-          {services.map(({ icon: Icon, title, copy }, index) => (
-            <article className="service-card" key={title}>
+          {services.map(({ icon: Icon, title, copy, url }, index) => (
+            <a className="service-card" href={url} key={title}>
               <div className="service-card-top">
                 <Icon size={25} aria-hidden="true" />
                 <span>{String(index + 1).padStart(2, '0')}</span>
               </div>
               <h3>{title}</h3>
               <p>{copy}</p>
-            </article>
+            </a>
           ))}
         </div>
       </section>
@@ -786,6 +944,7 @@ function App() {
         </div>
       </footer>
     </main>
+    </>
   );
 }
 
