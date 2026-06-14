@@ -17,6 +17,7 @@ import {
   Rocket,
   Smartphone,
   Sun,
+  UserRound,
   UsersRound,
   Workflow,
 } from 'lucide-react';
@@ -152,14 +153,14 @@ const featuredProducts = [
     tags: ['AI Agent', 'Task Orchestration', 'Automation', 'Intelligent Workflows'],
   },
   {
-    title: 'FLOWPILOT',
-    sector: 'WhatsApp Automation',
-    image: '/product-flowpilot.png',
+    title: 'BODEN',
+    sector: 'Fashion Ecommerce',
+    image: '/product-boden.png',
     url: '#contact',
     cta: 'Plan similar',
     summary:
-      'A smart automation dashboard for WhatsApp replies, lead qualification, customer support queues, and AI-powered message flows for service businesses.',
-    tags: ['WhatsApp Automation', 'AI Replies', 'Lead Qualification', 'Smart Flows'],
+      'A polished fashion ecommerce homepage concept with an editorial summer campaign, premium product storytelling, category-led navigation, promotional banner, and a clean shopping path built for modern apparel brands.',
+    tags: ['Fashion Ecommerce', 'Editorial UI', 'Storefront Design', 'Product Campaign'],
   },
   {
     title: 'LEADNEST',
@@ -182,14 +183,14 @@ const featuredProducts = [
     tags: ['API Integrations', 'Business Automation', 'Operations', 'Sync Workflows'],
   },
   {
-    title: 'BRANDSUITE',
-    sector: 'White-label SaaS',
-    image: '/product-brandsuite.png',
+    title: 'SPORTCART',
+    sector: 'Mobile Ecommerce App',
+    image: '/product-sportcart.png',
     url: '#contact',
     cta: 'Plan similar',
     summary:
-      'A white-label SaaS admin system where companies can manage branding, client workspaces, subscriptions, mobile previews, and product settings.',
-    tags: ['White-label SaaS', 'Subscriptions', 'Branding', 'Admin Dashboard'],
+      'A modern sports shopping mobile app concept with product discovery, category browsing, cart actions, pickup tracking, order summaries, and a clean checkout experience for active lifestyle brands.',
+    tags: ['Mobile App', 'Sports Ecommerce', 'Checkout Flow', 'Order Tracking'],
   },
 ];
 
@@ -236,14 +237,157 @@ const results = [
   },
 ];
 
+const clientStories = [
+  {
+    quote: 'The website looked premium from day one. The team kept the process clear and helped us launch without confusion.',
+    author: 'Aarav Sharma',
+  },
+  {
+    quote: 'Our CRM flow is much cleaner now. Leads, follow-ups, and reminders finally sit in one simple system.',
+    author: 'Priya Nair',
+  },
+  {
+    quote: 'They understood the business problem first, then built a fast app experience that our users could actually use.',
+    author: 'Kunal Mehta',
+  },
+  {
+    quote: 'Skillwyn turned our messy booking process into a clean digital workflow. The handoff was smooth and practical.',
+    author: 'James Carter',
+  },
+  {
+    quote: 'The dashboard gave our team the visibility we needed. It feels simple, fast, and built around daily operations.',
+    author: 'Maya Singh',
+  },
+  {
+    quote: 'Their team translated a rough idea into a polished product plan, then shipped the first version quickly.',
+    author: 'Olivia Brown',
+  },
+];
+
+const faqs = [
+  {
+    question: 'How long does it take to build a website or app?',
+    answer:
+      'Most landing pages and business websites take 1 to 3 weeks depending on content, pages, and integrations. Apps, dashboards, CRM systems, and AI products usually need a custom timeline after we understand the scope.',
+  },
+  {
+    question: 'What do you need to start the project?',
+    answer:
+      'We usually start with your business goal, target audience, references, brand assets if available, and the features you want. If you do not have everything ready, we can help shape the plan before design and development begins.',
+  },
+  {
+    question: 'Can Skillwyn Labs build AI tools and automations?',
+    answer:
+      'Yes. We build AI chatbots, workflow automations, lead systems, dashboards, CRM tools, API integrations, and custom AI product experiences for startups and businesses.',
+  },
+  {
+    question: 'Do you also help with design, content, and launch?',
+    answer:
+      'Yes. We can help with UI design, page structure, messaging, responsive development, deployment, performance checks, and the launch path so the product is usable in the real world.',
+  },
+  {
+    question: 'Can I get a custom proposal before starting?',
+    answer:
+      'Yes. Book a free consultation and we will understand your requirements, suggest the right build approach, and share a clear custom proposal for your website, app, AI product, or automation system.',
+  },
+];
+
+const metrics = [
+  {
+    value: 75,
+    suffix: '+',
+    label: 'Projects Delivered',
+    copy: 'Websites, apps, dashboards, automations, and AI product experiences delivered across real business use cases.',
+  },
+  {
+    value: 25,
+    suffix: '+',
+    label: 'Automations Built',
+    copy: 'Lead capture, WhatsApp replies, CRM updates, reporting, and repeated operations turned into cleaner systems.',
+  },
+  {
+    value: 10,
+    suffix: 'x',
+    label: 'Faster Execution',
+    copy: 'Sharper scope, cleaner user flows, and practical execution plans before development starts.',
+  },
+  {
+    value: 50,
+    suffix: 'K+',
+    label: 'Community Reach',
+    copy: 'A growing community following practical product, AI, automation, and software execution work.',
+  },
+];
+
 const portfolioRows = [
   ['AI', 'NEWATO', 'AI that executes across workflows', 'AI Experience • SaaS UI'],
   ['ECOM', 'PRAMILA', 'Modern Indian wear ecommerce presence', 'Website • Storefront'],
-  ['AUTO', 'FLOWPILOT', 'WhatsApp replies and lead automation', 'AI Bots - Smart Flows'],
+  ['ECOM', 'BODEN', 'Editorial summer fashion storefront', 'Website - Ecommerce'],
   ['CRM', 'LEADNEST', 'Lead tracking and follow-up system', 'CRM - Sales Pipeline'],
   ['OPS', 'OPSBRIDGE', 'Connected business workflow automation', 'APIs - Integrations'],
-  ['SAAS', 'BRANDSUITE', 'White-label SaaS admin platform', 'Subscriptions - Branding'],
+  ['APP', 'SPORTCART', 'Sports shopping app experience', 'Mobile - Ecommerce'],
 ];
+
+function AnimatedMetric({ value, suffix, label, copy }) {
+  const metricRef = useRef(null);
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    const element = metricRef.current;
+    if (!element) {
+      return undefined;
+    }
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      setDisplayValue(value);
+      return undefined;
+    }
+
+    let frameId = 0;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        const duration = 2600;
+        const startTime = performance.now();
+
+        const animate = (time) => {
+          const progress = Math.min((time - startTime) / duration, 1);
+          const eased = progress < 0.5 ? 2 * progress ** 2 : 1 - ((-2 * progress + 2) ** 2) / 2;
+          setDisplayValue(Math.round(value * eased));
+
+          if (progress < 1) {
+            frameId = window.requestAnimationFrame(animate);
+          }
+        };
+
+        frameId = window.requestAnimationFrame(animate);
+        observer.disconnect();
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+      window.cancelAnimationFrame(frameId);
+    };
+  }, [value]);
+
+  return (
+    <article className="metric-card" ref={metricRef} aria-label={`${value}${suffix} ${label}`}>
+      <strong>
+        {displayValue}
+        <span>{suffix}</span>
+      </strong>
+      <small>{label}</small>
+    </article>
+  );
+}
 
 function CustomCursor() {
   const cursorRef = useRef(null);
@@ -330,72 +474,6 @@ function SmoothScroll() {
   return null;
 }
 
-function SiteLoader() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    let currentProgress = 0;
-    const progressTimer = window.setInterval(() => {
-      currentProgress = Math.min(currentProgress + Math.random() * 12 + 4, 92);
-      setProgress(currentProgress);
-    }, 170);
-
-    const minTimer = window.setTimeout(() => {
-      setProgress(100);
-      setIsLoaded(true);
-    }, 2200);
-
-    const handleLoad = () => {
-      window.setTimeout(() => {
-        setProgress(100);
-        setIsLoaded(true);
-      }, 2200);
-    };
-
-    if (document.readyState === 'complete') {
-      handleLoad();
-    } else {
-      window.addEventListener('load', handleLoad, { once: true });
-    }
-
-    return () => {
-      window.clearInterval(progressTimer);
-      window.clearTimeout(minTimer);
-      window.removeEventListener('load', handleLoad);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isLoaded) {
-      return undefined;
-    }
-
-    const hideTimer = window.setTimeout(() => setIsHidden(true), 620);
-    return () => window.clearTimeout(hideTimer);
-  }, [isLoaded]);
-
-  if (isHidden) {
-    return null;
-  }
-
-  return (
-    <div className={`site-loader ${isLoaded ? 'is-loaded' : ''}`} role="status" aria-live="polite">
-      <div className="loader-orbit" aria-hidden="true">
-        <span className="loader-ring loader-ring-one" />
-        <span className="loader-ring loader-ring-two" />
-        <img src="/favicon-source.png" alt="" />
-      </div>
-      <div className="loader-copy">
-        <span>Skillwyn Labs</span>
-        <i style={{ '--loader-progress': `${progress}%` }} aria-hidden="true" />
-      </div>
-      <span className="sr-only">Loading Skillwyn Labs</span>
-    </div>
-  );
-}
-
 function ScrollReveal() {
   useEffect(() => {
     const autoRevealSelectors = [
@@ -403,12 +481,16 @@ function ScrollReveal() {
       '.hero-visual',
       '.logo-cloud',
       '.post-chat-section > div',
+      '.metrics-section',
+      '.metric-card',
       '.section-heading',
       '.service-card',
       '.process-grid article',
       '.result-card',
       '.product-card',
       '.resource-section > div',
+      '.client-stories-section',
+      '.client-story-card',
       '.testimonial-section',
       '.cta-section > div',
       '.cta-section > a',
@@ -467,6 +549,8 @@ function App() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [schedulerOpen, setSchedulerOpen] = useState(false);
+  const [clientStoryPage, setClientStoryPage] = useState(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const [promoPrompt, setPromoPrompt] = useState('');
   const [theme, setTheme] = useState(() => {
     const savedTheme = window.localStorage.getItem('skillwyn-theme');
@@ -474,6 +558,8 @@ function App() {
   });
 
   const isDarkTheme = theme === 'dark';
+  const clientStoryPages = Math.ceil(clientStories.length / 3);
+  const visibleClientStories = clientStories.slice(clientStoryPage * 3, clientStoryPage * 3 + 3);
 
   const openScheduler = () => {
     setMobileMenuOpen(false);
@@ -483,6 +569,10 @@ function App() {
 
   const closeScheduler = () => setSchedulerOpen(false);
   const toggleTheme = () => setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'));
+  const showPreviousClientStories = () =>
+    setClientStoryPage((currentPage) => (currentPage - 1 + clientStoryPages) % clientStoryPages);
+  const showNextClientStories = () =>
+    setClientStoryPage((currentPage) => (currentPage + 1) % clientStoryPages);
   const openPromoScheduler = (prompt) => {
     setMobileMenuOpen(false);
     setPromoPrompt(prompt);
@@ -577,7 +667,6 @@ function App() {
 
   return (
     <>
-    <SiteLoader />
     <main className="site-shell" data-theme={theme}>
       <SmoothScroll />
       <ScrollReveal />
@@ -604,7 +693,7 @@ function App() {
             {isDarkTheme ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
           </button>
           <button className="nav-cta" type="button" onClick={openScheduler}>
-            Book a call
+            Get Free Website Audit
           </button>
         </div>
         <button 
@@ -630,7 +719,7 @@ function App() {
             {isDarkTheme ? 'Light theme' : 'Dark theme'}
           </button>
           <button className="mobile-cta" type="button" onClick={openScheduler}>
-            Book a call
+            Claim Free Consultation
           </button>
         </div>
       </div>
@@ -681,7 +770,7 @@ function App() {
             automations for businesses that want modern digital systems.
           </p>
           <button className="hero-button" type="button" onClick={openScheduler}>
-            Start a project <ArrowRight size={18} aria-hidden="true" />
+            Discuss Your Project <ArrowRight size={18} aria-hidden="true" />
           </button>
         </div>
 
@@ -689,39 +778,15 @@ function App() {
           <div className="work-showcase">
             <div className="showcase-glow" />
             <article className="showcase-frame pramila-frame" style={{ '--hover-glow': 'rgba(241, 210, 138, 0.3)' }}>
-              <div className="window-header">
-                <div className="window-dots">
-                  <span className="dot dot-red" />
-                  <span className="dot dot-yellow" />
-                  <span className="dot dot-green" />
-                </div>
-                <div className="window-address">pramila.co</div>
-              </div>
               <img src="/product-pramila.png" alt="Pramila Storefront" />
             </article>
 
-            <article className="showcase-frame newato-frame" style={{ '--hover-glow': 'rgba(65, 170, 255, 0.3)' }}>
-              <div className="window-header">
-                <div className="window-dots">
-                  <span className="dot dot-red" />
-                  <span className="dot dot-yellow" />
-                  <span className="dot dot-green" />
-                </div>
-                <div className="window-address">newato.world</div>
-              </div>
-              <img src="/product-newato.png" alt="Newato Dashboard" />
+            <article className="showcase-frame newato-frame" style={{ '--hover-glow': 'rgba(241, 210, 138, 0.3)' }}>
+              <img src="/product-boden.png" alt="Boden fashion ecommerce storefront" />
             </article>
 
-            <article className="showcase-frame ai-frame" style={{ '--hover-glow': 'rgba(255, 255, 255, 0.25)' }}>
-              <div className="window-header">
-                <div className="window-dots">
-                  <span className="dot dot-red" />
-                  <span className="dot dot-yellow" />
-                  <span className="dot dot-green" />
-                </div>
-                <div className="window-address">kaib.finance</div>
-              </div>
-              <img src="/product-kaib.svg" alt="Kaib App" />
+            <article className="showcase-frame ai-frame" style={{ '--hover-glow': 'rgba(0, 154, 218, 0.28)' }}>
+              <img src="/product-sportcart.png" alt="Sportcart mobile ecommerce app" />
             </article>
           </div>
         </div>
@@ -770,6 +835,14 @@ function App() {
         </div>
       </section>
 
+      <section className="metrics-section" aria-label="Skillwyn Labs impact numbers">
+        <div className="metrics-grid">
+          {metrics.map((metric) => (
+            <AnimatedMetric key={metric.label} {...metric} />
+          ))}
+        </div>
+      </section>
+
       <section id="process" className="section process-section">
         <div className="section-heading">
           <p className="eyebrow">Process</p>
@@ -800,11 +873,13 @@ function App() {
             <a
               className={`product-card reveal-card reveal-${index % 2 === 0 ? 'left' : 'right'}`}
               data-reveal
-              href={product.url}
+              href={bookingUrl}
               key={product.title}
-              rel={product.url.startsWith('http') ? 'noreferrer' : undefined}
+              onClick={(event) => {
+                event.preventDefault();
+                openScheduler();
+              }}
               style={{ '--reveal-delay': `${Math.min(index % 4, 3) * 120}ms` }}
-              target={product.url.startsWith('http') ? '_blank' : undefined}
             >
               <div className="product-preview">
                 <img src={product.image} alt={`${product.title} website preview`} />
@@ -871,6 +946,39 @@ function App() {
         </div>
       </section>
 
+      <section className="client-stories-section" aria-labelledby="client-stories-title">
+        <div className="client-stories-heading">
+          <p className="eyebrow">Client Notes</p>
+          <h2 id="client-stories-title">Built with clarity, shipped with care.</h2>
+          <span>Real feedback from website, app, CRM, and automation builds.</span>
+        </div>
+        <div className="client-stories-grid">
+          {visibleClientStories.map((story) => (
+            <article className="client-story-card" key={story.author}>
+              <span className="client-avatar" aria-hidden="true">
+                <UserRound size={22} />
+              </span>
+              <p>{story.quote}</p>
+              <small>{story.author}</small>
+            </article>
+          ))}
+        </div>
+        <div className="client-story-controls" aria-label="Client review pages">
+          <button type="button" aria-label="Show previous client reviews" onClick={showPreviousClientStories}>‹</button>
+          {Array.from({ length: clientStoryPages }).map((_, index) => (
+            <button
+              className={`client-story-dot ${index === clientStoryPage ? 'is-active' : ''}`}
+              type="button"
+              aria-label={`Show client review page ${index + 1}`}
+              aria-pressed={index === clientStoryPage}
+              key={index}
+              onClick={() => setClientStoryPage(index)}
+            />
+          ))}
+          <button type="button" aria-label="Show next client reviews" onClick={showNextClientStories}>›</button>
+        </div>
+      </section>
+
       <section className="testimonial-section">
         <blockquote>
           “Skillwyn Labs helps teams move from idea to product with the speed of
@@ -895,7 +1003,36 @@ function App() {
           </p>
         </div>
         <button className="hero-button" type="button" onClick={openScheduler}>
-          Book a call <ArrowRight size={18} aria-hidden="true" />
+          Get Custom Proposal <ArrowRight size={18} aria-hidden="true" />
+        </button>
+      </section>
+
+      <section className="faq-section" aria-labelledby="faq-title">
+        <div className="faq-heading">
+          <p className="eyebrow">FAQ</p>
+          <h2 id="faq-title">Frequently asked questions.</h2>
+          <p>Quick answers about websites, apps, AI products, automations, and project timelines.</p>
+        </div>
+        <div className="faq-list">
+          {faqs.map((faq, index) => (
+            <article className={`faq-item ${openFaqIndex === index ? 'is-open' : ''}`} key={faq.question}>
+              <button
+                type="button"
+                aria-expanded={openFaqIndex === index}
+                aria-controls={`faq-answer-${index}`}
+                onClick={() => setOpenFaqIndex((currentIndex) => (currentIndex === index ? -1 : index))}
+              >
+                <span>{faq.question}</span>
+                <i aria-hidden="true">+</i>
+              </button>
+              <div className="faq-answer" id={`faq-answer-${index}`}>
+                <p>{faq.answer}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <button className="faq-cta" type="button" onClick={openScheduler}>
+          Ask your project question <ArrowRight size={16} aria-hidden="true" />
         </button>
       </section>
 
