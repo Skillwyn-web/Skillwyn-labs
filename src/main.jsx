@@ -5,6 +5,8 @@ import {
   ArrowRight,
   BarChart3,
   Cpu,
+  Download,
+  FileText,
   Globe,
   Layers3,
   Lightbulb,
@@ -543,7 +545,48 @@ function ScrollReveal() {
   return null;
 }
 
-function App() {
+function CataloguePage() {
+  return (
+    <main className="catalogue-page">
+      <nav className="catalogue-topbar" aria-label="Catalogue navigation">
+        <a className="catalogue-brand" href="/" aria-label="Skillwyn Labs home">
+          <img src="/skillwyn-white-logo.png" alt="Skillwyn Labs" />
+        </a>
+        <div className="catalogue-nav-actions">
+          <a className="catalogue-pill catalogue-pill-muted" href="/">
+            Home
+          </a>
+          <a className="catalogue-pill catalogue-pill-primary" href="/skillwyn-labs-catalogue.pdf" download>
+            Download PDF <Download size={16} aria-hidden="true" />
+          </a>
+        </div>
+      </nav>
+
+      <section className="catalogue-hero">
+        <div>
+          <p className="eyebrow">Company Catalogue</p>
+          <h1>Skillwyn Labs Catalogue</h1>
+          <p>
+            View our services, products, and build capabilities in one dedicated
+            catalogue page.
+          </p>
+        </div>
+        <a className="catalogue-pill catalogue-pill-muted" href="/skillwyn-labs-catalogue.pdf" target="_blank" rel="noreferrer">
+          Open PDF <ArrowRight size={16} aria-hidden="true" />
+        </a>
+      </section>
+
+      <section className="catalogue-viewer" aria-label="Skillwyn Labs catalogue PDF viewer">
+        <iframe
+          src="/skillwyn-labs-catalogue.pdf#toolbar=1&navpanes=0"
+          title="Skillwyn Labs Catalogue PDF"
+        />
+      </section>
+    </main>
+  );
+}
+
+function HomePage() {
   const [serviceIndex, setServiceIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -678,6 +721,7 @@ function App() {
         </a>
         <div className="nav-links">
           <a href="#services">Things we do</a>
+          <a href="/catalogue/index.html">Catalogue</a>
           <a href="#work">Work</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
@@ -711,6 +755,7 @@ function App() {
       <div className={`mobile-menu-drawer ${mobileMenuOpen ? 'is-active' : ''}`}>
         <div className="mobile-menu-links">
           <a href="#services" onClick={() => setMobileMenuOpen(false)}>Things we do</a>
+          <a href="/catalogue/index.html" onClick={() => setMobileMenuOpen(false)}>Catalogue</a>
           <a href="#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
           <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
@@ -772,6 +817,9 @@ function App() {
           <button className="hero-button" type="button" onClick={openScheduler}>
             Discuss Your Project <ArrowRight size={18} aria-hidden="true" />
           </button>
+          <a className="hero-link-button" href="/catalogue/index.html">
+            View Catalogue <FileText size={18} aria-hidden="true" />
+          </a>
         </div>
 
         <div className="hero-visual" aria-hidden="true">
@@ -1056,6 +1104,7 @@ function App() {
             <div>
               <span>Navigate</span>
               <a href="#services">Things we do</a>
+              <a href="/catalogue/index.html">Catalogue</a>
               <a href="#work">Work</a>
               <a href="#about">About</a>
               <a href="#contact">Contact</a>
@@ -1083,6 +1132,11 @@ function App() {
     </main>
     </>
   );
+}
+
+function App() {
+  const isCataloguePage = window.location.pathname.replace(/\/+$/, '') === '/catalogue';
+  return isCataloguePage ? <CataloguePage /> : <HomePage />;
 }
 
 createRoot(document.getElementById('root')).render(<App />);
